@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "ContactMainViewController.h"
+
 
 @interface ViewController ()
 
@@ -16,13 +18,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.navigationItem.title = @"Home";
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [button setTitle:@"Contacts" forState:UIControlStateNormal];
+    [button sizeToFit];
+    button.frame = CGRectMake(100, 100, 80, 20);
+    [button addTarget:self action:@selector(go:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)go:(id)sender{
+    ContactMainViewController *destVC = [[ContactMainViewController alloc]init];
+    
+    [self.navigationController pushViewController:destVC animated:YES];
 }
 
 

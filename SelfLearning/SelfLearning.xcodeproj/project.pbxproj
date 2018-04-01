@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A4861022070E1AA00CB9E8F /* ContactMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861012070E1AA00CB9E8F /* ContactMainViewController.m */; };
+		8A4861052070E2AE00CB9E8F /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861042070E2AE00CB9E8F /* ContactsTableViewController.m */; };
+		8A48610A2071291600CB9E8F /* ABFContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861092071291600CB9E8F /* ABFContactViewController.m */; };
+		8A48610D20712B0A00CB9E8F /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48610C20712B0A00CB9E8F /* AddressBook.framework */; };
 		E5955707206E51E9008D5A3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5955706206E51E9008D5A3C /* AppDelegate.m */; };
 		E595570A206E51E9008D5A3C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5955709206E51E9008D5A3C /* ViewController.m */; };
 		E595570D206E51E9008D5A3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E595570B206E51E9008D5A3C /* Main.storyboard */; };
@@ -35,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A4861002070E1AA00CB9E8F /* ContactMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactMainViewController.h; sourceTree = "<group>"; };
+		8A4861012070E1AA00CB9E8F /* ContactMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactMainViewController.m; sourceTree = "<group>"; };
+		8A4861032070E2AE00CB9E8F /* ContactsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		8A4861042070E2AE00CB9E8F /* ContactsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
+		8A4861082071291600CB9E8F /* ABFContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABFContactViewController.h; sourceTree = "<group>"; };
+		8A4861092071291600CB9E8F /* ABFContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABFContactViewController.m; sourceTree = "<group>"; };
+		8A48610C20712B0A00CB9E8F /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E5955702206E51E9008D5A3C /* SelfLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SelfLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5955705206E51E9008D5A3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E5955706206E51E9008D5A3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A48610D20712B0A00CB9E8F /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +90,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A4860FC2070DF8E00CB9E8F /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				8A4861002070E1AA00CB9E8F /* ContactMainViewController.h */,
+				8A4861012070E1AA00CB9E8F /* ContactMainViewController.m */,
+				8A4861032070E2AE00CB9E8F /* ContactsTableViewController.h */,
+				8A4861042070E2AE00CB9E8F /* ContactsTableViewController.m */,
+				8A4861082071291600CB9E8F /* ABFContactViewController.h */,
+				8A4861092071291600CB9E8F /* ABFContactViewController.m */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
+		8A48610B20712B0A00CB9E8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A48610C20712B0A00CB9E8F /* AddressBook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E59556F9206E51E8008D5A3C = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +118,7 @@
 				E595571D206E51E9008D5A3C /* SelfLearningTests */,
 				E5955728206E51E9008D5A3C /* SelfLearningUITests */,
 				E5955703206E51E9008D5A3C /* Products */,
+				8A48610B20712B0A00CB9E8F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +135,7 @@
 		E5955704206E51E9008D5A3C /* SelfLearning */ = {
 			isa = PBXGroup;
 			children = (
+				8A4860FC2070DF8E00CB9E8F /* Contacts */,
 				E5955705206E51E9008D5A3C /* AppDelegate.h */,
 				E5955706206E51E9008D5A3C /* AppDelegate.m */,
 				E5955708206E51E9008D5A3C /* ViewController.h */,
@@ -267,6 +302,9 @@
 			files = (
 				E595570A206E51E9008D5A3C /* ViewController.m in Sources */,
 				E5955715206E51E9008D5A3C /* main.m in Sources */,
+				8A4861052070E2AE00CB9E8F /* ContactsTableViewController.m in Sources */,
+				8A48610A2071291600CB9E8F /* ABFContactViewController.m in Sources */,
+				8A4861022070E1AA00CB9E8F /* ContactMainViewController.m in Sources */,
 				E5955707206E51E9008D5A3C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
