@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ContactMainViewController.h"
+#import "YapdbVC.h"
 
 
 @interface ViewController ()
@@ -35,7 +36,8 @@
 }
 
 -(IBAction)go:(id)sender{
-    ContactMainViewController *destVC = [[ContactMainViewController alloc]init];
+//    ContactMainViewController *destVC = [[ContactMainViewController alloc]init];
+    YapdbVC *destVC = [[YapdbVC alloc]init];
     
     [self.navigationController pushViewController:destVC animated:YES];
 }
