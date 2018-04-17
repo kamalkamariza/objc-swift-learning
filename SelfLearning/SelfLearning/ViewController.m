@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ContactMainViewController.h"
 #import "YapdbVC.h"
+#import "ProtobufMain.h"
 
 
 @interface ViewController ()
@@ -37,8 +38,8 @@
 
 -(IBAction)go:(id)sender{
 //    ContactMainViewController *destVC = [[ContactMainViewController alloc]init];
-    YapdbVC *destVC = [[YapdbVC alloc]init];
-    
+//    YapdbVC *destVC = [[YapdbVC alloc]init];
+    ProtobufMain *destVC = [[ProtobufMain alloc]init];
     
     [self.navigationController pushViewController:destVC animated:YES];
 }

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A4861022070E1AA00CB9E8F /* ContactMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861012070E1AA00CB9E8F /* ContactMainViewController.m */; };
-		8A4861052070E2AE00CB9E8F /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861042070E2AE00CB9E8F /* ContactsTableViewController.m */; };
-		8A48610A2071291600CB9E8F /* ABFContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861092071291600CB9E8F /* ABFContactViewController.m */; };
+		8A4861022070E1AA00CB9E8F /* ContactMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861012070E1AA00CB9E8F /* ContactMainViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8A4861052070E2AE00CB9E8F /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861042070E2AE00CB9E8F /* ContactsTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8A48610A2071291600CB9E8F /* ABFContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861092071291600CB9E8F /* ABFContactViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8A48610D20712B0A00CB9E8F /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48610C20712B0A00CB9E8F /* AddressBook.framework */; };
 		8DAC21DD11F5FF568C6CAC2C /* libPods-SelfLearningUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C42E787FD17AFF9529668A /* libPods-SelfLearningUITests.a */; };
 		B4EF9EFBAD6CE53722857CA7 /* libPods-SelfLearningTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1697491598245BB1CB84E535 /* libPods-SelfLearningTests.a */; };
@@ -17,15 +17,17 @@
 		E53F5B142080A03B00C76D30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53F5B132080A03A00C76D30 /* GoogleService-Info.plist */; };
 		E53F5B152080A03B00C76D30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53F5B132080A03A00C76D30 /* GoogleService-Info.plist */; };
 		E53F5B162080A03B00C76D30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53F5B132080A03A00C76D30 /* GoogleService-Info.plist */; };
-		E5955707206E51E9008D5A3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5955706206E51E9008D5A3C /* AppDelegate.m */; };
-		E595570A206E51E9008D5A3C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5955709206E51E9008D5A3C /* ViewController.m */; };
+		E5462C282085F2C800A81DD5 /* ProtobufMain.m in Sources */ = {isa = PBXBuildFile; fileRef = E5462C272085F2C800A81DD5 /* ProtobufMain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E5462C312085FEF800A81DD5 /* Profiles.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = E5462C2F2085FEF800A81DD5 /* Profiles.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E5955707206E51E9008D5A3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5955706206E51E9008D5A3C /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E595570A206E51E9008D5A3C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5955709206E51E9008D5A3C /* ViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E595570D206E51E9008D5A3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E595570B206E51E9008D5A3C /* Main.storyboard */; };
 		E595570F206E51E9008D5A3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E595570E206E51E9008D5A3C /* Assets.xcassets */; };
 		E5955712206E51E9008D5A3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5955710206E51E9008D5A3C /* LaunchScreen.storyboard */; };
-		E5955715206E51E9008D5A3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5955714206E51E9008D5A3C /* main.m */; };
+		E5955715206E51E9008D5A3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5955714206E51E9008D5A3C /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E595571F206E51E9008D5A3C /* SelfLearningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E595571E206E51E9008D5A3C /* SelfLearningTests.m */; };
 		E595572A206E51E9008D5A3C /* SelfLearningUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5955729206E51E9008D5A3C /* SelfLearningUITests.m */; };
-		E5DE2FB7207C928700222464 /* YapdbVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DE2FB6207C928700222464 /* YapdbVC.m */; };
+		E5DE2FB7207C928700222464 /* YapdbVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DE2FB6207C928700222464 /* YapdbVC.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,10 @@
 		B2817FD926DE763312275449 /* Pods-SelfLearning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfLearning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SelfLearning/Pods-SelfLearning.debug.xcconfig"; sourceTree = "<group>"; };
 		BD20EF0889564143FA38E38A /* Pods-SelfLearningUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfLearningUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SelfLearningUITests/Pods-SelfLearningUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E53F5B132080A03A00C76D30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E5462C262085F2C800A81DD5 /* ProtobufMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProtobufMain.h; sourceTree = "<group>"; };
+		E5462C272085F2C800A81DD5 /* ProtobufMain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProtobufMain.m; sourceTree = "<group>"; };
+		E5462C2F2085FEF800A81DD5 /* Profiles.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profiles.pbobjc.m; sourceTree = "<group>"; };
+		E5462C302085FEF800A81DD5 /* Profiles.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profiles.pbobjc.h; sourceTree = "<group>"; };
 		E5955702206E51E9008D5A3C /* SelfLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SelfLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5955705206E51E9008D5A3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E5955706206E51E9008D5A3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -149,11 +155,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E53F5B172080A29300C76D30 /* Firebase */ = {
+		E5462C252085F0D600A81DD5 /* Protobuf */ = {
 			isa = PBXGroup;
 			children = (
+				E5462C302085FEF800A81DD5 /* Profiles.pbobjc.h */,
+				E5462C2F2085FEF800A81DD5 /* Profiles.pbobjc.m */,
+				E5462C262085F2C800A81DD5 /* ProtobufMain.h */,
+				E5462C272085F2C800A81DD5 /* ProtobufMain.m */,
 			);
-			path = Firebase;
+			path = Protobuf;
 			sourceTree = "<group>";
 		};
 		E59556F9206E51E8008D5A3C = {
@@ -181,9 +191,8 @@
 		E5955704206E51E9008D5A3C /* SelfLearning */ = {
 			isa = PBXGroup;
 			children = (
-				E53F5B172080A29300C76D30 /* Firebase */,
+				E5462C252085F0D600A81DD5 /* Protobuf */,
 				E5DE2FB0207C91B200222464 /* Yapdb */,
-				E5DE2F7F207C5D3E00222464 /* Protocol Buffer */,
 				8A4860FC2070DF8E00CB9E8F /* Contacts */,
 				E5955708206E51E9008D5A3C /* ViewController.h */,
 				E5955709206E51E9008D5A3C /* ViewController.m */,
@@ -215,13 +224,6 @@
 				E595572B206E51E9008D5A3C /* Info.plist */,
 			);
 			path = SelfLearningUITests;
-			sourceTree = "<group>";
-		};
-		E5DE2F7F207C5D3E00222464 /* Protocol Buffer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Protocol Buffer";
 			sourceTree = "<group>";
 		};
 		E5DE2FB0207C91B200222464 /* Yapdb */ = {
@@ -436,6 +438,8 @@
 				8A48610A2071291600CB9E8F /* ABFContactViewController.m in Sources */,
 				8A4861022070E1AA00CB9E8F /* ContactMainViewController.m in Sources */,
 				E5955707206E51E9008D5A3C /* AppDelegate.m in Sources */,
+				E5462C282085F2C800A81DD5 /* ProtobufMain.m in Sources */,
+				E5462C312085FEF800A81DD5 /* Profiles.pbobjc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

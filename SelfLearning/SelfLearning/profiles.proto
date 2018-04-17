@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+message Person {
+  required string name = 1;
+  optional string phoneNumber = 2;
+  }
+
+ message Text {
+ 	required string message = 1;
+ }
+
+ message Contacts{
+ 	repeated Person people = 1;
+ }
+
+ message Chat {
+ 	repeated Text messages = 1;
+ }
