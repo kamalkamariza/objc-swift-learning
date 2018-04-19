@@ -14,7 +14,7 @@
     int i;
     Contacts *contact;
     Chat *chat;
-    NSOutputStream *file;
+    NSOutputStream *oStream;
 }
 @end
 
@@ -59,15 +59,16 @@
 }
 
 -(void)createStream{
-    file = [NSOutputStream outputStreamToFileAtPath:@"/Users/Kamal/Documents/Xcode/Self-Learning/SelfLearning" append:NO];
+//    file = [[NSOutputStream alloc]initToFileAtPath:@"/Users/Kamal/Documents/Xcode/Self-Learning/SelfLearning" append:nil];
+//    file = [NSOutputStream outputStreamToFileAtPath:@"/Users/Kamal/Documents/Xcode/Self-Learning/SelfLearning" append:NO];
    
-//    NSLog(@"Creating and opening NSOutputStream...");
-//    // oStream is an instance variable
-//    oStream = [[NSOutputStream alloc] initToMemory];
-//    [oStream setDelegate:self];
-//    [oStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
-//                       forMode:NSDefaultRunLoopMode];
-//    [oStream open];
+    NSLog(@"Creating and opening NSOutputStream...");
+    // oStream is an instance variable
+    oStream = [[NSOutputStream alloc] initToFileAtPath:@"/Users/Kamal/Documents/Xcode/Self-Learning/SelfLearning" append:nil];
+    [oStream setDelegate:self];
+    [oStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+                       forMode:NSDefaultRunLoopMode];
+    [oStream open];
 }
 
 -(IBAction)setObject:(id)sender{
@@ -151,7 +152,7 @@
 //
 //    }
     
-    [contact writeToOutputStream:file];
+    [contact writeToOutputStream:oStream];
 }
 
 - (void)didReceiveMemoryWarning {

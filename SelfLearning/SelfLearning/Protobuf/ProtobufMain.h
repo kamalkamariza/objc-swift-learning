@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProtobufMain : UIViewController
+@interface ProtobufMain : UIViewController <NSStreamDelegate>
 
 @end
