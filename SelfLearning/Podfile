@@ -11,6 +11,7 @@ target 'SelfLearning' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/Database'
+  pod 'Protobuf', '~> 3.5'
 
 
   target 'SelfLearningTests' do

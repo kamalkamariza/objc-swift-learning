@@ -14,6 +14,7 @@
     int i;
     Contacts *contact;
     Chat *chat;
+    NSOutputStream *file;
 }
 @end
 
@@ -26,6 +27,8 @@
     i = 0;
     
     [self initBtns];
+    [self createStream];
+    
     
     contact = [[Contacts alloc]init];
     chat = [[Chat alloc]init];
@@ -55,6 +58,18 @@
     [self.view addSubview:getAll];
 }
 
+-(void)createStream{
+    file = [NSOutputStream outputStreamToFileAtPath:@"/Users/Kamal/Documents/Xcode/Self-Learning/SelfLearning" append:NO];
+   
+//    NSLog(@"Creating and opening NSOutputStream...");
+//    // oStream is an instance variable
+//    oStream = [[NSOutputStream alloc] initToMemory];
+//    [oStream setDelegate:self];
+//    [oStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+//                       forMode:NSDefaultRunLoopMode];
+//    [oStream open];
+}
+
 -(IBAction)setObject:(id)sender{
     Person *a = [[Person alloc]init];
     Text *aText = [[Text alloc]init];
@@ -64,6 +79,9 @@
     switch (i) {
         case 0:
         {
+//            [a writeToOutputStream:(nonnull NSOutputStream *)];
+            
+//            [Person parseFromData:(nonnull NSData *) error:(NSError * _Nullable * _Nullable)];
             NSLog(@"i %d", i);
             a.name = @"Kamal";
             a.phoneNumber = @"123";
@@ -133,6 +151,7 @@
 //
 //    }
     
+    [contact writeToOutputStream:file];
 }
 
 - (void)didReceiveMemoryWarning {
