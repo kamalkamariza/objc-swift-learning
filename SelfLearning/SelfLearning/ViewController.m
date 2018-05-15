@@ -10,6 +10,7 @@
 #import "ContactMainViewController.h"
 #import "YapdbVC.h"
 #import "ProtobufMain.h"
+#import "APIViewController.h"
 
 
 @interface ViewController ()
@@ -23,7 +24,7 @@
     self.navigationItem.title = @"Home";
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    [button setTitle:@"Contacts" forState:UIControlStateNormal];
+    [button setTitle:@"Go" forState:UIControlStateNormal];
     [button sizeToFit];
     button.frame = CGRectMake(100, 100, 80, 20);
     [button addTarget:self action:@selector(go:) forControlEvents:UIControlEventTouchUpInside];
@@ -39,7 +40,8 @@
 -(IBAction)go:(id)sender{
 //    ContactMainViewController *destVC = [[ContactMainViewController alloc]init];
 //    YapdbVC *destVC = [[YapdbVC alloc]init];
-    ProtobufMain *destVC = [[ProtobufMain alloc]init];
+//    ProtobufMain *destVC = [[ProtobufMain alloc]init];
+    APIViewController *destVC = [[APIViewController alloc]init];
     
     [self.navigationController pushViewController:destVC animated:YES];
 }
