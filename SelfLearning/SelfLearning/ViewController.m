@@ -11,6 +11,7 @@
 #import "YapdbVC.h"
 #import "ProtobufMain.h"
 #import "APIViewController.h"
+#import "SecurityViewController.h"
 
 
 @interface ViewController ()
@@ -41,7 +42,8 @@
 //    ContactMainViewController *destVC = [[ContactMainViewController alloc]init];
 //    YapdbVC *destVC = [[YapdbVC alloc]init];
 //    ProtobufMain *destVC = [[ProtobufMain alloc]init];
-    APIViewController *destVC = [[APIViewController alloc]init];
+//    APIViewController *destVC = [[APIViewController alloc]init];
+    SecurityViewController *destVC = [[SecurityViewController alloc]init];
     
     [self.navigationController pushViewController:destVC animated:YES];
 }
