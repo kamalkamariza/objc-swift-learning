@@ -13,7 +13,8 @@ target 'SelfLearning' do
   pod 'Firebase/Database'
   pod 'Protobuf', '~> 3.5'
   pod 'AFNetworking'
-
+  pod 'Braintree'
+  pod 'BraintreeDropIn'
 
   target 'SelfLearningTests' do
     inherit! :search_paths

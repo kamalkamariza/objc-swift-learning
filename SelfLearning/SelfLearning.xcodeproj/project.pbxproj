@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A2E2CCA2150A86D00F4D5D3 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E2CC92150A86D00F4D5D3 /* PaymentViewController.m */; };
 		8A4861022070E1AA00CB9E8F /* ContactMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861012070E1AA00CB9E8F /* ContactMainViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8A4861052070E2AE00CB9E8F /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861042070E2AE00CB9E8F /* ContactsTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8A48610A2071291600CB9E8F /* ABFContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4861092071291600CB9E8F /* ABFContactViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -54,6 +55,9 @@
 		3C5951CB31DB3D1806053F17 /* Pods-SelfLearning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfLearning.release.xcconfig"; path = "Pods/Target Support Files/Pods-SelfLearning/Pods-SelfLearning.release.xcconfig"; sourceTree = "<group>"; };
 		59B537A1C12B65BE473FB9CD /* Pods-SelfLearningTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfLearningTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SelfLearningTests/Pods-SelfLearningTests.release.xcconfig"; sourceTree = "<group>"; };
 		7CD1CFB638DCB8BB44D8BD96 /* Pods-SelfLearningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfLearningUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SelfLearningUITests/Pods-SelfLearningUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8A2E2CC82150A86D00F4D5D3 /* PaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		8A2E2CC92150A86D00F4D5D3 /* PaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		8A2E2CCB2150B6A900F4D5D3 /* SelfLearning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SelfLearning.entitlements; sourceTree = "<group>"; };
 		8A4861002070E1AA00CB9E8F /* ContactMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactMainViewController.h; sourceTree = "<group>"; };
 		8A4861012070E1AA00CB9E8F /* ContactMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactMainViewController.m; sourceTree = "<group>"; };
 		8A4861032070E2AE00CB9E8F /* ContactsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
@@ -137,6 +141,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8A2E2CC72150A83D00F4D5D3 /* Payment  */ = {
+			isa = PBXGroup;
+			children = (
+				8A2E2CC82150A86D00F4D5D3 /* PaymentViewController.h */,
+				8A2E2CC92150A86D00F4D5D3 /* PaymentViewController.m */,
+			);
+			name = "Payment ";
+			sourceTree = "<group>";
+		};
 		8A4860FC2070DF8E00CB9E8F /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +228,8 @@
 		E5955704206E51E9008D5A3C /* SelfLearning */ = {
 			isa = PBXGroup;
 			children = (
+				8A2E2CCB2150B6A900F4D5D3 /* SelfLearning.entitlements */,
+				8A2E2CC72150A83D00F4D5D3 /* Payment  */,
 				8AA7B0C120EDD2D50032C746 /* Security */,
 				8A64085320AAAFBA0056736B /* API */,
 				E5462C252085F0D600A81DD5 /* Protobuf */,
@@ -272,7 +287,6 @@
 				E59556FE206E51E9008D5A3C /* Sources */,
 				E59556FF206E51E9008D5A3C /* Frameworks */,
 				E5955700206E51E9008D5A3C /* Resources */,
-				E1C93408B8A94438FE5737D6 /* [CP] Embed Pods Frameworks */,
 				E4C59CE1AB7D1BF3D256BE45 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -292,8 +306,6 @@
 				E5955716206E51E9008D5A3C /* Sources */,
 				E5955717206E51E9008D5A3C /* Frameworks */,
 				E5955718206E51E9008D5A3C /* Resources */,
-				C32425C26A92280C326CE2DC /* [CP] Embed Pods Frameworks */,
-				24ED2EBB0550506F17382C35 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -313,8 +325,6 @@
 				E5955721206E51E9008D5A3C /* Sources */,
 				E5955722206E51E9008D5A3C /* Frameworks */,
 				E5955723206E51E9008D5A3C /* Resources */,
-				7A2D87959F2AB4280A321933 /* [CP] Embed Pods Frameworks */,
-				C4CD524B23C654FA9238FC7B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -338,6 +348,11 @@
 					E5955701206E51E9008D5A3C = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
+						};
 					};
 					E5955719206E51E9008D5A3C = {
 						CreatedOnToolsVersion = 9.2;
@@ -402,21 +417,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		24ED2EBB0550506F17382C35 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SelfLearningTests/Pods-SelfLearningTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4C9AFD8C01A3AFD98AD5BC19 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,75 +453,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7A2D87959F2AB4280A321933 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SelfLearningUITests/Pods-SelfLearningUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C32425C26A92280C326CE2DC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SelfLearningTests/Pods-SelfLearningTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C4CD524B23C654FA9238FC7B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SelfLearningUITests/Pods-SelfLearningUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E1C93408B8A94438FE5737D6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SelfLearning/Pods-SelfLearning-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E4C59CE1AB7D1BF3D256BE45 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SelfLearning/Pods-SelfLearning-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Braintree/Braintree-UI-Localization.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Braintree/Braintree-Drop-In-Localization.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/BraintreeDropIn/Braintree-UIKit-Localization.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Braintree-UI-Localization.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Braintree-Drop-In-Localization.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Braintree-UIKit-Localization.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -556,6 +503,7 @@
 				E595570A206E51E9008D5A3C /* ViewController.m in Sources */,
 				E5955715206E51E9008D5A3C /* main.m in Sources */,
 				8AA7B0C420EDD3090032C746 /* SecurityViewController.m in Sources */,
+				8A2E2CCA2150A86D00F4D5D3 /* PaymentViewController.m in Sources */,
 				8A4861052070E2AE00CB9E8F /* ContactsTableViewController.m in Sources */,
 				8A64085620AAB0220056736B /* APIViewController.m in Sources */,
 				E5DE2FB7207C928700222464 /* YapdbVC.m in Sources */,
@@ -727,6 +675,8 @@
 			baseConfigurationReference = B2817FD926DE763312275449 /* Pods-SelfLearning.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SelfLearning/SelfLearning.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SelfLearning/Info.plist;
@@ -734,6 +684,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Kamal.SelfLearning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -743,6 +694,8 @@
 			baseConfigurationReference = 3C5951CB31DB3D1806053F17 /* Pods-SelfLearning.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SelfLearning/SelfLearning.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SelfLearning/Info.plist;
@@ -750,6 +703,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Kamal.SelfLearning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
