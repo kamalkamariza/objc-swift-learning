@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CommonCrypto/CommonCrypto.h>
+#import <CommonCrypto/CommonCryptor.h>
+#import "Encryptor.h"
 
 @interface SecurityViewController : UIViewController
 

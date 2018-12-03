@@ -44,10 +44,10 @@
 //    YapdbVC *destVC = [[YapdbVC alloc]init];
 //    ProtobufMain *destVC = [[ProtobufMain alloc]init];
 //    APIViewController *destVC = [[APIViewController alloc]init];
-//    SecurityViewController *destVC = [[SecurityViewController alloc]init];
+    SecurityViewController *destVC = [[SecurityViewController alloc]init];
 //    PaymentViewController *destVC = [[PaymentViewController alloc]init];
     
-//    [self.navigationController pushViewController:destVC animated:YES];
+    [self.navigationController pushViewController:destVC animated:YES];
 }
 
 
