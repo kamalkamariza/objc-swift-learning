@@ -1,0 +1,46 @@
+PODS:
+  - 25519 (2.0.2)
+  - AxolotlKit (0.8):
+    - 25519 (~> 2.0.1)
+    - HKDFKit (~> 0.0.3)
+    - ProtocolBuffers (~> 1.9.8)
+  - Curve25519Kit (2.1.0)
+  - HKDFKit (0.0.3)
+  - ProtocolBuffers (1.9.11)
+
+DEPENDENCIES:
+  - AxolotlKit
+  - Curve25519Kit (from `https://github.com/WhisperSystems/25519.git`, branch `mkirk/framework-friendly`)
+  - HKDFKit (from `https://github.com/WhisperSystems/HKDFKit.git`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - '25519'
+    - AxolotlKit
+    - ProtocolBuffers
+
+EXTERNAL SOURCES:
+  Curve25519Kit:
+    :branch: mkirk/framework-friendly
+    :git: https://github.com/WhisperSystems/25519.git
+  HKDFKit:
+    :git: https://github.com/WhisperSystems/HKDFKit.git
+
+CHECKOUT OPTIONS:
+  Curve25519Kit:
+    :commit: 03a19c80aafc10a3464f0c086b1eb38239c507ac
+    :git: https://github.com/WhisperSystems/25519.git
+  HKDFKit:
+    :commit: 6f9f183da3370c902344dd1f444ec0e0387a833f
+    :git: https://github.com/WhisperSystems/HKDFKit.git
+
+SPEC CHECKSUMS:
+  '25519': dc4bad7e2dbcbf1efa121068a705a44cd98c80fc
+  AxolotlKit: a33962f26943990e5d69d05b30470cea18caeed0
+  Curve25519Kit: 76d0859ecb34704f7732847812363f83b23a6a59
+  HKDFKit: a7e8b8661f2a137e5d50a9e2197c22d538ae52d9
+  ProtocolBuffers: d509225eb2ea43d9582a59e94348fcf86e2abd65
+
+PODFILE CHECKSUM: 48e7cbce20273ae6be820969a2645bc66f104a69
+
+COCOAPODS: 1.5.3
