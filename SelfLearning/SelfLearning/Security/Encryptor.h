@@ -40,4 +40,6 @@
     Security Framework - RSA Algorithm, public and private key
  **/
 
++(void) TestEncryptDecrpt;
+
 @end

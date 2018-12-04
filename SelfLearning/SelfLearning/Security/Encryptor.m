@@ -8,7 +8,6 @@
 
 #import "Encryptor.h"
 
-
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
 
@@ -265,10 +264,61 @@
     RSA Algorithm
  **/
 
-+(void) TestEncryptDecrpt{
-    
++(void) createPubPrivKeys{
     OSStatus status;
-    NSData* tag = [@"com.example.keys.mykey" dataUsingEncoding:NSUTF8StringEncoding];
+
+    SecKeyRef publicKey;
+    SecKeyRef privateKey;
+    
+    NSData  *pubKeyTag = [@"com.kaichat2.beta.public" dataUsingEncoding:NSUTF8StringEncoding];
+    NSData  *privKeyTag = [@"com.kaichat2.beta.public" dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary *privAttr = @{(id)kSecAttrIsPermanent:    @YES,
+                               (id)kSecAttrApplicationTag: privKeyTag,
+                               };
+    
+    NSDictionary *pubAttr = @{(id)kSecAttrIsPermanent:    @YES,
+                              (id)kSecAttrApplicationTag: pubKeyTag,
+                               };
+    
+    NSDictionary* attributes =
+    @{ (id)kSecAttrKeyType:               (id)kSecAttrKeyTypeRSA,
+       (id)kSecAttrKeySizeInBits:         @2048,
+       (id)kSecPublicKeyAttrs:            pubAttr,
+       (id)kSecPrivateKeyAttrs:           privAttr,
+       };
+
+    status = SecKeyGeneratePair((__bridge CFDictionaryRef)attributes, &publicKey, &privateKey );
+    
+    if(status == noErr){
+        NSLog(@"Process done");
+        if(publicKey && privateKey){
+            NSLog(@"Keys generated");
+            
+            CFTypeRef resultPrivKey;
+            CFTypeRef resultPubKey;
+            OSStatus getPrivate;
+            OSStatus getPublic;
+            
+            getPublic = SecItemCopyMatching((__bridge CFDictionaryRef)pubAttr, &resultPubKey);
+            getPrivate = SecItemCopyMatching((__bridge CFDictionaryRef)privAttr, &resultPrivKey);
+
+            if(getPrivate == noErr){
+
+            }
+            
+            if(getPublic == noErr){
+                
+            }
+        }
+    }
+}
+
++(void) TestEncryptDecrpt{
+    OSStatus status;
+    NSString *tagInput = @"com.kaichat2.beta";
+    NSData* tag = [tagInput dataUsingEncoding:NSUTF8StringEncoding];
+    
     NSDictionary* attributes =
     @{ (id)kSecAttrKeyType:               (id)kSecAttrKeyTypeRSA,
        (id)kSecAttrKeySizeInBits:         @1024,
@@ -282,26 +332,58 @@
     SecKeyRef privateKey = SecKeyCreateRandomKey((__bridge CFDictionaryRef)attributes, &error);
     SecKeyRef publicKey = SecKeyCopyPublicKey(privateKey);
     
+    NSLog(@"%@", [NSString stringWithFormat:@"\n\nPrivate Key%@\nPublic Key %@", privateKey, publicKey]);
     
     // *** it will work if I generate the key by SecKeyGeneratePair ***
-    // status = SecKeyGeneratePair( (__bridge CFDictionaryRef)attributes, &publicKey, &privateKey );
-    
+     status = SecKeyGeneratePair( (__bridge CFDictionaryRef)attributes, &publicKey, &privateKey );
     
     // start encrypt and decrypt a message
     static char const kMessage[] = "This is a secret!\n";
+    NSString *inputText = @"This is a secret a message!";
+    
+    NSLog(@"Actual input %@", inputText);
+
     SecKeyAlgorithm algorithm = kSecKeyAlgorithmRSAEncryptionRaw;
     BOOL canEncrypt = SecKeyIsAlgorithmSupported(publicKey, kSecKeyOperationTypeEncrypt, algorithm);
-    NSData* plainData = [NSData dataWithBytes:kMessage length:sizeof(kMessage)];
+    
+    NSData *base64Data = [inputText dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *plainData = [base64Data base64EncodedDataWithOptions:0];
+    NSLog(@"Base64 input %@", [plainData base64EncodedStringWithOptions:0]);
+
+//    NSData* plainData = [NSData dataWithBytes:kMessage length:sizeof(kMessage)];
     canEncrypt &= ([plainData length] < (SecKeyGetBlockSize(publicKey)-130));
     
     NSData* cipherText = nil;
     if (canEncrypt) {
         CFErrorRef error = NULL;
         cipherText = (NSData*)CFBridgingRelease( SecKeyCreateEncryptedData(publicKey, algorithm, (__bridge CFDataRef)plainData, &error));
+        cipherText = [cipherText base64EncodedDataWithOptions:0];
+        NSLog(@"Encrypted input %@", [cipherText base64EncodedStringWithOptions:0]);
         if (!cipherText) {
             NSError *err = CFBridgingRelease(error);  // ARC takes ownership
             // Handle the error. . .
             NSLog(@"error = %@, %@", [err userInfo], [err localizedDescription]);
+        }
+        
+        if(cipherText){
+            NSLog(@"Cipher text exist");
+            NSLog(@"Encrypted output %@", [cipherText base64EncodedStringWithOptions:0]);
+            NSData *unencryptedData = [cipherText base64EncodedDataWithOptions:0];
+            NSLog(@"64 output %@", [unencryptedData base64EncodedStringWithOptions:0]);
+            unencryptedData = (NSData*)CFBridgingRelease(SecKeyCreateDecryptedData(privateKey, algorithm, (__bridge CFDataRef)unencryptedData, &error));
+            
+            if(unencryptedData){
+                NSLog(@"Decrypt output %@", [unencryptedData base64EncodedStringWithOptions:0]);
+
+                NSData *unencryptedDataTest = (NSData*)CFBridgingRelease(SecKeyCreateDecryptedData(privateKey, algorithm, (__bridge CFDataRef)cipherText, &error));
+                
+                
+                NSString *retTest = [[NSString alloc] initWithData:unencryptedDataTest encoding:NSUTF8StringEncoding];
+                NSString *ret = [[NSString alloc] initWithData:unencryptedData encoding:NSUTF8StringEncoding];
+                
+                NSLog(@"Actual message is %@", ret);
+                NSLog(@"Actual message is %@", retTest);
+            }
         }
     }
     

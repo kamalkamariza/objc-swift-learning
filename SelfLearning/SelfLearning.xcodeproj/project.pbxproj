@@ -15,6 +15,7 @@
 		8A64085620AAB0220056736B /* APIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A64085520AAB0220056736B /* APIViewController.m */; };
 		8AA7B0C420EDD3090032C746 /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA7B0C320EDD3090032C746 /* SecurityViewController.m */; };
 		8AB419DC21B5175D008E8B15 /* Encryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB419DB21B5175D008E8B15 /* Encryptor.m */; };
+		8AB419DF21B669F6008E8B15 /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB419DD21B669F5008E8B15 /* RSA.m */; };
 		8DAC21DD11F5FF568C6CAC2C /* libPods-SelfLearningUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C42E787FD17AFF9529668A /* libPods-SelfLearningUITests.a */; };
 		B4EF9EFBAD6CE53722857CA7 /* libPods-SelfLearningTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1697491598245BB1CB84E535 /* libPods-SelfLearningTests.a */; };
 		D13C4E152B815546776890A4 /* libPods-SelfLearning.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94CCB6AAD2F9F01F64193E02 /* libPods-SelfLearning.a */; };
@@ -72,6 +73,8 @@
 		8AA7B0C320EDD3090032C746 /* SecurityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecurityViewController.m; sourceTree = "<group>"; };
 		8AB419DA21B5175D008E8B15 /* Encryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Encryptor.h; sourceTree = "<group>"; };
 		8AB419DB21B5175D008E8B15 /* Encryptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Encryptor.m; sourceTree = "<group>"; };
+		8AB419DD21B669F5008E8B15 /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
+		8AB419DE21B669F6008E8B15 /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
 		94CCB6AAD2F9F01F64193E02 /* libPods-SelfLearning.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SelfLearning.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C42E787FD17AFF9529668A /* libPods-SelfLearningUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SelfLearningUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2817FD926DE763312275449 /* Pods-SelfLearning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfLearning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SelfLearning/Pods-SelfLearning.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 		8AA7B0C120EDD2D50032C746 /* Security */ = {
 			isa = PBXGroup;
 			children = (
+				8AB419DE21B669F6008E8B15 /* RSA.h */,
+				8AB419DD21B669F5008E8B15 /* RSA.m */,
 				8AA7B0C220EDD3090032C746 /* SecurityViewController.h */,
 				8AA7B0C320EDD3090032C746 /* SecurityViewController.m */,
 				8AB419DA21B5175D008E8B15 /* Encryptor.h */,
@@ -505,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB419DF21B669F6008E8B15 /* RSA.m in Sources */,
 				E595570A206E51E9008D5A3C /* ViewController.m in Sources */,
 				E5955715206E51E9008D5A3C /* main.m in Sources */,
 				8AA7B0C420EDD3090032C746 /* SecurityViewController.m in Sources */,
