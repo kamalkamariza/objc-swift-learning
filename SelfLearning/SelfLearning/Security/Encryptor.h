@@ -41,5 +41,6 @@
  **/
 
 +(void) TestEncryptDecrpt;
++(void) createPubPrivKeys;
 
 @end

@@ -38,6 +38,8 @@
     
     //TestRSA
     [self testRSA];
+    
+    [Encryptor createPubPrivKeys];
 }
 
 -(void) testRSA{

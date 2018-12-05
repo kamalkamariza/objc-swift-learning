@@ -299,17 +299,24 @@
             CFTypeRef resultPubKey;
             OSStatus getPrivate;
             OSStatus getPublic;
+            CFErrorRef error;
+            NSData *publicKeyOutput;
+            NSData *privateKeyOutput;
+            
+            NSString *publicKeyString;
+            NSString *privateKeyString;
             
             getPublic = SecItemCopyMatching((__bridge CFDictionaryRef)pubAttr, &resultPubKey);
             getPrivate = SecItemCopyMatching((__bridge CFDictionaryRef)privAttr, &resultPrivKey);
-
-            if(getPrivate == noErr){
-
-            }
             
-            if(getPublic == noErr){
-                
-            }
+            publicKeyOutput = (NSData*)CFBridgingRelease(SecKeyCopyExternalRepresentation(publicKey, &error));
+            privateKeyOutput = (NSData*)CFBridgingRelease(SecKeyCopyExternalRepresentation(privateKey, &error));
+            
+            publicKeyString = [publicKeyOutput base64EncodedStringWithOptions:0];
+            privateKeyString = [privateKeyOutput base64EncodedStringWithOptions:0];
+            
+            NSLog(@"Public Key %@", publicKeyString);
+            NSLog(@"Private Key %@", privateKeyString);
         }
     }
 }
