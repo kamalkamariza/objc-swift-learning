@@ -11,6 +11,12 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
 
+#define HMAC256_KEY_LENGTH 32
+#define HMAC256_OUTPUT_LENGTH 32
+#define AES_CBC_IV_LENGTH 16
+#define AES_KEY_SIZE 32
+#define RSA_KEY_BITS_SIZE 2048
+
 @interface NSData (AES256Encryption)
 - (NSData *)encryptedDataWithHexKey:(NSString*)hexKey hexIV:(NSString *)hexIV;
 - (NSData *)originalDataWithHexKey:(NSString*)hexKey hexIV:(NSString *)hexIV;
@@ -123,6 +129,92 @@
     free(buffer);
     return nil;
 }
+
+
++ (void)fillDataArray:(char **)dataPtr length:(NSUInteger)length usingHexStringData:(NSData *)hexStringData
+{
+    NSData *data = hexStringData;
+    NSAssert((data.length + 1) == length, @"The hex provided didn't decode to match length");
+    
+    unsigned long total_bytes = (length + 1) * sizeof(char);
+    
+    *dataPtr = malloc(total_bytes);
+    bzero(*dataPtr, total_bytes);
+    memcpy(*dataPtr, data.bytes, data.length);
+}
+
+- (NSData *)encryptedDataWithHexKeyData:(NSData*)hexKey hexIVData:(NSData *)hexIV
+{
+    // Fetch key data and put into C string array padded with \0
+    char *keyPtr;
+    //    [NSData fillDataArray:&keyPtr length:kCCKeySizeAES256+1 usingHexString:hexKey];
+    [NSData fillDataArray:&keyPtr length:kCCKeySizeAES256+1 usingHexStringData:hexKey];
+    
+    // Fetch iv data and put into C string array padded with \0
+    char *ivPtr;
+    //    [NSData fillDataArray:&ivPtr length:kCCKeySizeAES128+1 usingHexString:hexIV];
+    [NSData fillDataArray:&ivPtr length:kCCKeySizeAES128+1 usingHexStringData:hexIV];
+    
+    // For block ciphers, the output size will always be less than or equal to the input size plus the size of one block because we add padding.
+    // That's why we need to add the size of one block here
+    NSUInteger dataLength = self.length;
+    size_t bufferSize = dataLength + kCCBlockSizeAES128;
+    void *buffer = malloc( bufferSize );
+    
+    size_t numBytesEncrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt, kCCAlgorithmAES, kCCOptionPKCS7Padding,
+                                          keyPtr, kCCKeySizeAES256,
+                                          ivPtr /* initialization vector */,
+                                          [self bytes], [self length], /* input */
+                                          buffer, bufferSize, /* output */
+                                          &numBytesEncrypted);
+    free(keyPtr);
+    free(ivPtr);
+    
+    if(cryptStatus == kCCSuccess) {
+        return [NSData dataWithBytesNoCopy:buffer length:numBytesEncrypted];
+    }
+    
+    free(buffer);
+    return nil;
+}
+
+- (NSData *)originalDataWithHexKeyData:(NSData*)hexKey hexIVData:(NSData *)hexIV
+{
+    // Fetch key data and put into C string array padded with \0
+    char *keyPtr;
+    [NSData fillDataArray:&keyPtr length:kCCKeySizeAES256+1 usingHexStringData:hexKey];
+    
+    // Fetch iv data and put into C string array padded with \0
+    char *ivPtr;
+    [NSData fillDataArray:&ivPtr length:kCCKeySizeAES128+1 usingHexStringData:hexIV];
+    
+    // For block ciphers, the output size will always be less than or equal to the input size plus the size of one block because we add padding.
+    // That's why we need to add the size of one block here
+    NSUInteger dataLength = self.length;
+    size_t bufferSize = dataLength + kCCBlockSizeAES128;
+    void *buffer = malloc( bufferSize );
+    
+    size_t numBytesDecrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt( kCCDecrypt, kCCAlgorithmAES, kCCOptionPKCS7Padding,
+                                          keyPtr, kCCKeySizeAES256,
+                                          ivPtr,
+                                          [self bytes], dataLength, /* input */
+                                          buffer, bufferSize, /* output */
+                                          &numBytesDecrypted );
+    free(keyPtr);
+    free(ivPtr);
+    
+    if( cryptStatus == kCCSuccess )
+    {
+        // The returned NSData takes ownership of the buffer and will free it on deallocation
+        return [NSData dataWithBytesNoCopy:buffer length:numBytesDecrypted];
+    }
+    
+    free(buffer);
+    return nil;
+}
+
 @end
 
 @implementation Encryptor
@@ -185,6 +277,41 @@
         NSString *cipherText = [encryptedPayload base64EncodedStringWithOptions:0];
         NSLog(@"Encryped Result: %@", cipherText);
         return encryptedPayload;
+    } else {
+        return nil;
+    }
+}
+
++ (NSData*)encodeAndPrintData:(NSData *)plainData
+                  usingHexKey:(NSString *)hexKey
+                        hexIV:(NSString *)hexIV{
+    
+    NSData *encryptedPayload = [plainData encryptedDataWithHexKey:hexKey
+                                                       hexIV:hexIV];
+    
+    if (encryptedPayload) {
+        NSString *cipherText = [encryptedPayload base64EncodedStringWithOptions:0];
+        NSLog(@"Encryped Result: %@", cipherText);
+        return encryptedPayload;
+    } else {
+        return nil;
+    }
+}
+
++ (NSData*)decodeAndPrintCipher64Data:(NSData *)cipherData
+                          usingHexKey:(NSString *)hexKey
+                                hexIV:(NSString *)hexIV{
+    
+//    NSData *data = [[NSData alloc] initWithBase64EncodedData:cipherData options:0];
+//    NSAssert(data != nil, @"Couldn't base64 decode cipher text");
+    
+    NSData *decryptedPayload = [cipherData originalDataWithHexKey:hexKey
+                                                      hexIV:hexIV];
+    
+    if (decryptedPayload) {
+        NSString *plainText = [[NSString alloc] initWithData:decryptedPayload encoding:NSUTF8StringEncoding];
+        NSLog(@"Decrypted Result: %@", plainText);
+        return decryptedPayload;
     } else {
         return nil;
     }
@@ -264,7 +391,7 @@
     RSA Algorithm
  **/
 
-+(void) createPubPrivKeys{
++ (void) createPubPrivKeys:(void (^)(NSString *private, NSString* public))completionHandler{
     OSStatus status;
 
     SecKeyRef publicKey;
@@ -283,7 +410,7 @@
     
     NSDictionary* attributes =
     @{ (id)kSecAttrKeyType:               (id)kSecAttrKeyTypeRSA,
-       (id)kSecAttrKeySizeInBits:         @2048,
+       (id)kSecAttrKeySizeInBits:         @1024,
        (id)kSecPublicKeyAttrs:            pubAttr,
        (id)kSecPrivateKeyAttrs:           privAttr,
        };
@@ -314,6 +441,8 @@
             
             publicKeyString = [publicKeyOutput base64EncodedStringWithOptions:0];
             privateKeyString = [privateKeyOutput base64EncodedStringWithOptions:0];
+            
+            completionHandler(privateKeyString, publicKeyString);
             
             NSLog(@"Public Key %@", publicKeyString);
             NSLog(@"Private Key %@", privateKeyString);
@@ -393,7 +522,62 @@
             }
         }
     }
+}
+
++ (NSMutableData *_Nonnull)generateRandomKeysWithIV:(NSUInteger)lengthIV withHexKey:(NSUInteger)lengthHex{
+    NSMutableData *data = [NSMutableData new];
     
+    NSData *key = [self generateRandomBytes:lengthHex];
+    NSData *iv = [self generateRandomBytes:lengthIV];
+    
+    [data appendData:iv];
+    [data appendData:key];
+    
+    return data;
+}
+
++ (NSMutableData *)generateRandomBytes:(NSUInteger)numberBytes {
+    /* used to generate db master key, and to generate signaling key, both at install */
+    NSMutableData *randomBytes = [NSMutableData dataWithLength:numberBytes];
+    int err                    = 0;
+    err                        = SecRandomCopyBytes(kSecRandomDefault, numberBytes, [randomBytes mutableBytes]);
+    if (err != noErr) {
+        @throw [NSException exceptionWithName:@"random problem" reason:@"problem generating the random " userInfo:nil];
+    }
+    return randomBytes;
+}
+
++ (NSData*_Nonnull)encryptDataAES:(NSData *_Nonnull)base64Data
+                     usingKeyData:(NSData *_Nonnull)keyData
+{
+    NSData *hexIV = [keyData subdataWithRange:NSMakeRange(0, AES_CBC_IV_LENGTH)];
+    NSData *hexKey = [keyData subdataWithRange:NSMakeRange(AES_CBC_IV_LENGTH, AES_KEY_SIZE)];
+    
+    NSData *encryptedPayload = [base64Data encryptedDataWithHexKeyData:hexKey
+                                                             hexIVData:hexIV];
+    
+    if (encryptedPayload) {
+        return encryptedPayload;
+    } else {
+        return nil;
+    }
+}
+
++ (NSData*_Nonnull)decryptCipherDataAES:(NSData *_Nonnull)cipherData
+                           usingKeyData:(NSData *_Nonnull)keyData
+{
+    NSData *hexIV = [keyData subdataWithRange:NSMakeRange(0, AES_CBC_IV_LENGTH)];
+    NSData *hexKey = [keyData subdataWithRange:NSMakeRange(AES_CBC_IV_LENGTH, AES_KEY_SIZE)];
+    
+    //base64 decoded Data
+    NSData *decryptedPayload = [cipherData originalDataWithHexKeyData:hexKey
+                                                            hexIVData:hexIV];
+    
+    if (decryptedPayload) {
+        return decryptedPayload;
+    } else {
+        return nil;
+    }
 }
 
 @end

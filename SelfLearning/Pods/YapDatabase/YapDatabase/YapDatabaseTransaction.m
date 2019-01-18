@@ -351,7 +351,7 @@
 	}
 	
 	NSNumber *cachedRowid = [connection->keyCache keyForObject:cacheKey];
-	if (cachedRowid)
+	if (cachedRowid != nil)
 	{
 		if (rowidPtr) *rowidPtr = [cachedRowid longLongValue];
 		return YES;
@@ -811,7 +811,7 @@
 		return object;
 	
 	NSNumber *cachedRowid = [connection->keyCache keyForObject:cacheKey];
-	if (cachedRowid)
+	if (cachedRowid != nil)
 	{
 		int64_t rowid = [cachedRowid longLongValue];
 		
@@ -920,7 +920,7 @@
 	}
 	
 	NSNumber *cachedRowid = [connection->keyCache keyForObject:cacheKey];
-	if (cachedRowid)
+	if (cachedRowid != nil)
 	{
 		int64_t rowid = [cachedRowid longLongValue];
 		
@@ -1064,7 +1064,7 @@
 		// Fetch via query.
 		
 		NSNumber *cachedRowid = [connection->keyCache keyForObject:cacheKey];
-		if (cachedRowid)
+		if (cachedRowid != nil)
 		{
 			int64_t rowid = [cachedRowid longLongValue];
 			
@@ -1233,7 +1233,7 @@
 	YapCollectionKey *cacheKey = [[YapCollectionKey alloc] initWithCollection:collection key:key];
 	
 	NSNumber *cachedRowid = [connection->keyCache keyForObject:cacheKey];
-	if (cachedRowid)
+	if (cachedRowid != nil)
 	{
 		int64_t rowid = [cachedRowid longLongValue];
 		
@@ -1328,7 +1328,7 @@
 	YapCollectionKey *cacheKey = [[YapCollectionKey alloc] initWithCollection:collection key:key];
 	
 	NSNumber *cachedRowid = [connection->keyCache keyForObject:cacheKey];
-	if (cachedRowid)
+	if (cachedRowid != nil)
 	{
 		int64_t rowid = [cachedRowid longLongValue];
 		
@@ -1434,7 +1434,7 @@
 	YapCollectionKey *cacheKey = [[YapCollectionKey alloc] initWithCollection:collection key:key];
 	
 	NSNumber *cachedRowid = [connection->keyCache keyForObject:cacheKey];
-	if (cachedRowid)
+	if (cachedRowid != nil)
 	{
 		int64_t rowid = [cachedRowid longLongValue];
 		
@@ -4129,7 +4129,7 @@
 		// Bind parameters.
 		// And move objects from the missingIndexes array into keyIndexDict.
 		
-		if (keyIndexDict)
+		if (!keyIndexDict)
 			keyIndexDict = [NSMutableDictionary dictionaryWithCapacity:numKeyParams];
 		else
 			[keyIndexDict removeAllObjects];
@@ -4263,6 +4263,8 @@
 	NSDictionary *extConnections = [connection extensions];
 	
 	[extConnections enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL __unused *stop) {
+	#pragma clang diagnostic push
+	#pragma clang diagnostic ignored "-Wimplicit-retain-self"
 		
 		__unsafe_unretained NSString *extName = key;
 		__unsafe_unretained YapDatabaseExtensionConnection *extConnection = obj;
@@ -4280,6 +4282,8 @@
 				[extensions setObject:extTransaction forKey:extName];
 			}
 		}
+		
+	#pragma clang diagnostic pop
 	}];
 	
 	if (orderedExtensions == nil)

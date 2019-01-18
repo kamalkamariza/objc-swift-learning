@@ -7,7 +7,7 @@
 //
 
 #import "YapdbVC.h"
-#import <YapDatabase.h>
+//#import <YapDatabase.h>
 
 NSString *const testKey1 = @"Key1";
 NSString *const testKey2 = @"Key2";
@@ -20,8 +20,8 @@ NSString *const collection3 = @"Collection3";
 
 @interface YapdbVC ()
 {
-    YapDatabase *db;
-    YapDatabaseConnection *conn;
+//    YapDatabase *db;
+//    YapDatabaseConnection *conn;
     UITextField *tf;
     UITextField *tf2;
     UITextField *tf3;
@@ -41,8 +41,8 @@ NSString *const collection3 = @"Collection3";
 }
 
 -(void) initDb{
-    db = [[YapDatabase alloc]initWithPath:@"/Users/weeclicks/Documents/Kamal/YapDb/db"];
-    conn = [db newConnection];
+//    db = [[YapDatabase alloc]initWithPath:@"/Users/weeclicks/Documents/Kamal/YapDb/db"];
+//    conn = [db newConnection];
 }
 
 -(void)initButtons{
@@ -79,12 +79,12 @@ NSString *const collection3 = @"Collection3";
 }
 
 -(IBAction)setObject:(id)sender{
-    [conn readWriteWithBlock:^(YapDatabaseReadWriteTransaction * _Nonnull transaction) {
-        [transaction setObject:@"Hello" forKey:testKey1 inCollection:collection1];
-        [transaction setObject:@"Im" forKey:testKey2 inCollection:collection2];
-        [transaction setObject:@"Kamal" forKey:testKey3 inCollection:collection3];
-
-    }];
+//    [conn readWriteWithBlock:^(YapDatabaseReadWriteTransaction * _Nonnull transaction) {
+//        [transaction setObject:@"Hello" forKey:testKey1 inCollection:collection1];
+//        [transaction setObject:@"Im" forKey:testKey2 inCollection:collection2];
+//        [transaction setObject:@"Kamal" forKey:testKey3 inCollection:collection3];
+//
+//    }];
     NSLog(@"Set");
 }
 
@@ -93,15 +93,15 @@ NSString *const collection3 = @"Collection3";
     __block NSMutableString *temp2 = [[NSMutableString alloc]init];
     __block NSMutableString *temp3 = [[NSMutableString alloc]init];
 
-    [conn readWithBlock:^(YapDatabaseReadTransaction * _Nonnull transaction) {
-        temp = [transaction objectForKey:testKey1 inCollection:collection1];
-        temp2 = [transaction objectForKey:testKey2 inCollection:collection2];
-        temp3 = [transaction objectForKey:testKey3 inCollection:collection3];
-        tf.text = temp;
-        tf2.text = temp2;
-        tf3.text = temp3;
-
-    }];
+//    [conn readWithBlock:^(YapDatabaseReadTransaction * _Nonnull transaction) {
+//        temp = [transaction objectForKey:testKey1 inCollection:collection1];
+//        temp2 = [transaction objectForKey:testKey2 inCollection:collection2];
+//        temp3 = [transaction objectForKey:testKey3 inCollection:collection3];
+//        tf.text = temp;
+//        tf2.text = temp2;
+//        tf3.text = temp3;
+//
+//    }];
     NSLog(@"Get");
 }
 

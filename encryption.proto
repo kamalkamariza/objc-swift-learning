@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+message DataMessage {
+  
+  enum Type {
+    SOMESSAGETYPETEXT         = 0;
+    SOMESSAGETYPEPHOTO        = 1;
+    SOMESSAGETYPEVIDEO        = 2;
+  }
+
+  optional string              recipient     = 1;
+  optional string              sender        = 2;
+  optional string              body          = 3;
+  optional bool                attachment    = 4;
+}

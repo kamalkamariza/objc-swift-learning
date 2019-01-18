@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (3.2.0):
-    - AFNetworking/NSURLSession (= 3.2.0)
-    - AFNetworking/Reachability (= 3.2.0)
-    - AFNetworking/Security (= 3.2.0)
-    - AFNetworking/Serialization (= 3.2.0)
-    - AFNetworking/UIKit (= 3.2.0)
-  - AFNetworking/NSURLSession (3.2.0):
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.0)
-  - AFNetworking/Security (3.2.0)
-  - AFNetworking/Serialization (3.2.0)
-  - AFNetworking/UIKit (3.2.0):
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - Braintree (4.17.0):
     - Braintree/Card (= 4.17.0)
@@ -51,111 +51,114 @@ PODS:
     - Braintree/UnionPay (~> 4.17)
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (6.4.0)
-  - CocoaLumberjack (3.4.1):
-    - CocoaLumberjack/Default (= 3.4.1)
-    - CocoaLumberjack/Extensions (= 3.4.1)
-  - CocoaLumberjack/Default (3.4.1)
-  - CocoaLumberjack/Extensions (3.4.1):
+  - CocoaLumberjack (3.4.2):
+    - CocoaLumberjack/Default (= 3.4.2)
+    - CocoaLumberjack/Extensions (= 3.4.2)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
-  - Firebase/Core (4.12.0):
-    - FirebaseAnalytics (= 4.1.0)
-    - FirebaseCore (= 4.0.19)
-  - Firebase/Database (4.12.0):
-    - Firebase/Core
-    - FirebaseDatabase (= 4.1.5)
-  - Firebase/Messaging (4.12.0):
-    - Firebase/Core
-    - FirebaseMessaging (= 2.2.0)
-  - FirebaseAnalytics (4.1.0):
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
+  - Firebase/Core (5.4.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.1)
+  - Firebase/CoreOnly (5.4.0):
+    - FirebaseCore (= 5.0.5)
+  - Firebase/Database (5.4.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (= 5.0.2)
+  - Firebase/Messaging (5.4.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.0.3)
+  - FirebaseAnalytics (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.19):
+  - FirebaseCore (5.0.5):
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseDatabase (4.1.5):
-    - FirebaseAnalytics (~> 4.1)
-    - FirebaseCore (~> 4.0)
+  - FirebaseDatabase (5.0.2):
+    - FirebaseCore (~> 5.0)
     - leveldb-library (~> 1.18)
-  - FirebaseInstanceID (2.0.10):
-    - FirebaseCore (~> 4.0)
-  - FirebaseMessaging (2.2.0):
-    - FirebaseAnalytics (~> 4.1)
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
+  - FirebaseInstanceID (3.1.1):
+    - FirebaseCore (~> 5.0)
+  - FirebaseMessaging (3.0.3):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
-    - Protobuf (~> 3.5)
-  - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/Logger (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
-    - GoogleToolboxForMac/Defines (= 2.1.3)
+    - Protobuf (~> 3.1)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Protobuf (3.5.0)
-  - YapDatabase (3.0.2):
-    - YapDatabase/Standard (= 3.0.2)
-  - YapDatabase/Standard (3.0.2):
-    - YapDatabase/Standard/Core (= 3.0.2)
-    - YapDatabase/Standard/Extensions (= 3.0.2)
-  - YapDatabase/Standard/Core (3.0.2):
+  - Protobuf (3.6.0)
+  - YapDatabase (3.1):
+    - YapDatabase/Standard (= 3.1)
+  - YapDatabase/Standard (3.1):
+    - YapDatabase/Standard/Core (= 3.1)
+    - YapDatabase/Standard/Extensions (= 3.1)
+  - YapDatabase/Standard/Core (3.1):
     - CocoaLumberjack
-  - YapDatabase/Standard/Extensions (3.0.2):
+  - YapDatabase/Standard/Extensions (3.1):
     - YapDatabase/Standard/Core
-    - YapDatabase/Standard/Extensions/ActionManager (= 3.0.2)
-    - YapDatabase/Standard/Extensions/AutoView (= 3.0.2)
-    - YapDatabase/Standard/Extensions/CloudCore (= 3.0.2)
-    - YapDatabase/Standard/Extensions/CloudKit (= 3.0.2)
-    - YapDatabase/Standard/Extensions/ConnectionProxy (= 3.0.2)
-    - YapDatabase/Standard/Extensions/CrossProcessNotification (= 3.0.2)
-    - YapDatabase/Standard/Extensions/FilteredView (= 3.0.2)
-    - YapDatabase/Standard/Extensions/FullTextSearch (= 3.0.2)
-    - YapDatabase/Standard/Extensions/Hooks (= 3.0.2)
-    - YapDatabase/Standard/Extensions/ManualView (= 3.0.2)
-    - YapDatabase/Standard/Extensions/Relationships (= 3.0.2)
-    - YapDatabase/Standard/Extensions/RTreeIndex (= 3.0.2)
-    - YapDatabase/Standard/Extensions/SearchResultsView (= 3.0.2)
-    - YapDatabase/Standard/Extensions/SecondaryIndex (= 3.0.2)
-    - YapDatabase/Standard/Extensions/View (= 3.0.2)
-  - YapDatabase/Standard/Extensions/ActionManager (3.0.2):
+    - YapDatabase/Standard/Extensions/ActionManager (= 3.1)
+    - YapDatabase/Standard/Extensions/AutoView (= 3.1)
+    - YapDatabase/Standard/Extensions/CloudCore (= 3.1)
+    - YapDatabase/Standard/Extensions/CloudKit (= 3.1)
+    - YapDatabase/Standard/Extensions/ConnectionPool (= 3.1)
+    - YapDatabase/Standard/Extensions/ConnectionProxy (= 3.1)
+    - YapDatabase/Standard/Extensions/CrossProcessNotification (= 3.1)
+    - YapDatabase/Standard/Extensions/FilteredView (= 3.1)
+    - YapDatabase/Standard/Extensions/FullTextSearch (= 3.1)
+    - YapDatabase/Standard/Extensions/Hooks (= 3.1)
+    - YapDatabase/Standard/Extensions/ManualView (= 3.1)
+    - YapDatabase/Standard/Extensions/Relationships (= 3.1)
+    - YapDatabase/Standard/Extensions/RTreeIndex (= 3.1)
+    - YapDatabase/Standard/Extensions/SearchResultsView (= 3.1)
+    - YapDatabase/Standard/Extensions/SecondaryIndex (= 3.1)
+    - YapDatabase/Standard/Extensions/View (= 3.1)
+  - YapDatabase/Standard/Extensions/ActionManager (3.1):
     - YapDatabase/Standard/Core
     - YapDatabase/Standard/Extensions/AutoView
-  - YapDatabase/Standard/Extensions/AutoView (3.0.2):
+  - YapDatabase/Standard/Extensions/AutoView (3.1):
     - YapDatabase/Standard/Core
     - YapDatabase/Standard/Extensions/View
-  - YapDatabase/Standard/Extensions/CloudCore (3.0.2):
+  - YapDatabase/Standard/Extensions/CloudCore (3.1):
     - YapDatabase/Standard/Core
-  - YapDatabase/Standard/Extensions/CloudKit (3.0.2):
+  - YapDatabase/Standard/Extensions/CloudKit (3.1):
     - YapDatabase/Standard/Core
-  - YapDatabase/Standard/Extensions/ConnectionProxy (3.0.2):
+  - YapDatabase/Standard/Extensions/ConnectionPool (3.1):
     - YapDatabase/Standard/Core
-  - YapDatabase/Standard/Extensions/CrossProcessNotification (3.0.2):
+  - YapDatabase/Standard/Extensions/ConnectionProxy (3.1):
     - YapDatabase/Standard/Core
-  - YapDatabase/Standard/Extensions/FilteredView (3.0.2):
+  - YapDatabase/Standard/Extensions/CrossProcessNotification (3.1):
     - YapDatabase/Standard/Core
-    - YapDatabase/Standard/Extensions/View
-  - YapDatabase/Standard/Extensions/FullTextSearch (3.0.2):
-    - YapDatabase/Standard/Core
-  - YapDatabase/Standard/Extensions/Hooks (3.0.2):
-    - YapDatabase/Standard/Core
-  - YapDatabase/Standard/Extensions/ManualView (3.0.2):
+  - YapDatabase/Standard/Extensions/FilteredView (3.1):
     - YapDatabase/Standard/Core
     - YapDatabase/Standard/Extensions/View
-  - YapDatabase/Standard/Extensions/Relationships (3.0.2):
+  - YapDatabase/Standard/Extensions/FullTextSearch (3.1):
     - YapDatabase/Standard/Core
-  - YapDatabase/Standard/Extensions/RTreeIndex (3.0.2):
+  - YapDatabase/Standard/Extensions/Hooks (3.1):
     - YapDatabase/Standard/Core
-  - YapDatabase/Standard/Extensions/SearchResultsView (3.0.2):
+  - YapDatabase/Standard/Extensions/ManualView (3.1):
+    - YapDatabase/Standard/Core
+    - YapDatabase/Standard/Extensions/View
+  - YapDatabase/Standard/Extensions/Relationships (3.1):
+    - YapDatabase/Standard/Core
+  - YapDatabase/Standard/Extensions/RTreeIndex (3.1):
+    - YapDatabase/Standard/Core
+  - YapDatabase/Standard/Extensions/SearchResultsView (3.1):
     - YapDatabase/Standard/Core
     - YapDatabase/Standard/Extensions/AutoView
     - YapDatabase/Standard/Extensions/FullTextSearch
-  - YapDatabase/Standard/Extensions/SecondaryIndex (3.0.2):
+  - YapDatabase/Standard/Extensions/SecondaryIndex (3.1):
     - YapDatabase/Standard/Core
-  - YapDatabase/Standard/Extensions/View (3.0.2):
+  - YapDatabase/Standard/Extensions/View (3.1):
     - YapDatabase/Standard/Core
 
 DEPENDENCIES:
@@ -169,7 +172,7 @@ DEPENDENCIES:
   - YapDatabase (~> 3.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - Braintree
     - BraintreeDropIn
@@ -187,22 +190,22 @@ SPEC REPOS:
     - YapDatabase
 
 SPEC CHECKSUMS:
-  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Braintree: 9681cef8240c8ad9e67493d5c19418041e6c259a
   BraintreeDropIn: b430d90d77bf7b8c40d51f2ba3b6bf18fe285202
-  CocoaLumberjack: 2e258a064cacc8eb9a2aca318e24d02a0a7fd56d
-  Firebase: d7fdf40e4d6c841849c52919f437fd3a0009ded0
-  FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
-  FirebaseCore: ff49ebb37e0f63a570d78c4f1c1c0befe8659d5c
-  FirebaseDatabase: 5f0bc6134c5c237cf55f9e1249d406770a75eafd
-  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
-  FirebaseMessaging: 75cdb862e86c30e0913a2ff307e48d49357c5b73
-  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
+  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
+  FirebaseCore: 42b3267233bd21a5abd54117ccc38ca3dd0f8e83
+  FirebaseDatabase: 27be5ac5bc75e0b17537b2bbfada8258addcc8cd
+  FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
+  FirebaseMessaging: f43eb0c0e1da096e659de6f713038e74862a62cd
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  YapDatabase: 299a32de9d350d37a9ac5b0532609d87d5d2a5de
+  Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
+  YapDatabase: 170882ac5926507a4ea6dddaf704ebdd3f1ec61c
 
 PODFILE CHECKSUM: 6a2a1bbdf26ee1a17b5fe67fbdf6b2ac18569d0e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0

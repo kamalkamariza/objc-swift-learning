@@ -118,10 +118,10 @@ static NSData *base64_decode(NSString *str){
 	
 	// This will be base64 encoded, decode it.
 	NSData *data = base64_decode(key);
-	data = [RSA stripPublicKeyHeader:data];
-	if(!data){
-		return nil;
-	}
+//    data = [RSA stripPublicKeyHeader:data];
+//    if(!data){
+//        return nil;
+//    }
 
 	//a tag to read/write keychain storage
 	NSString *tag = @"RSAUtil_PubKey";
@@ -187,10 +187,10 @@ static NSData *base64_decode(NSString *str){
 
 	// This will be base64 encoded, decode it.
 	NSData *data = base64_decode(key);
-	data = [RSA stripPrivateKeyHeader:data];
-	if(!data){
-		return nil;
-	}
+//    data = [RSA stripPrivateKeyHeader:data];
+//    if(!data){
+//        return nil;
+//    }
 
 	//a tag to read/write keychain storage
 	NSString *tag = @"RSAUtil_PrivKey";
