@@ -40,6 +40,9 @@
     
     [iv3 setImage:[UIImage imageNamed:@"a.png"]];
     
+    //test server key
+    [self testServerKey];
+    
     //  Simple AES
 //    [self simpleAES];
 
@@ -50,7 +53,7 @@
 //    [self customAES];
     
     //fileSharing
-    [self testFileSharing];
+//    [self testFileSharing];
     
     
     //Create random keys
@@ -68,33 +71,195 @@
 //    [self testProtobuf];
 }
 
+-(void)testServerKey{
+    NSString *privServerKey = @"-----BEGIN RSA PRIVATE KEY-----MIIEpQIBAAKCAQEA1xi385BHpxTw5lW1bbMAGeqD59FPT6bpT9k58isgfRrLYEsYUlMgRiGRm38qrYGzceb3Uz6syWqoJJypbDLNgJzCOczekR4HDRe4xLxQhuZ8RHzzcTAUC3aKLOqZcLmdZxiL0D3aNmukF2VFbKWNl5Qt5a2uOoGJTvITbkHuAw+adn3YxbK0iK0JO030MNH3Z1LkyDcSKHw8YzSCB5WTILRyrmfOTrpz7yld8fDNoaCpyQJ4G0hwm55S9E25j735h0/+nM4wZKUBJ6RD0k9ar9sg+J3IvuibG13Lj9Pfk+5XW9TI+BN6CSM3yZ3FwM1M6O8nFGiPISvAg4Fpvo2p5QIDAQABAoIBAQDLyIVu4kCgUTyyXH1ZAv+TjhWOKUWkxxPALKOzhZxwKlSIVF0kkdC/4Mncsiwy2fCydwnW+kglQ0Et/qac9bywntN8g1ZR0ksH4nORIICCbhdJo7/Yep5jBdl/GHxqydAQfrbngdIdQPnjmHSfrHFrLF4XfebVUyhNfRdfnGLszbu1COgqpxDbtbFe57eDBVq7Qrgz662APW2MdZbEhCN8yLKXg7QpHym0kJWDxATqbodUPWbQX6v8vvQiug2KELOTH7CpbNTtuCfrwcbOU3vuemaYBldLQ3XRt4Ceo4lm3xw3YBr4EjuiHiVY325OcQcMfdoVTq64inBcif/O5Iu5AoGBANmKdk76xmrBlhPygFJ6whfRAl2F09u/ed25SetlrBQ7j9S7Tf3R6mA4cShaVLWRyk4XpJI47e3HSiZNu35Euv/DzYLJyhRwiQI3ucoikndg1hrVqrEi7efnr15anMfk3h7u0Uag6dNODMhyWkD3NEF/ZcIioE5O5zhmQjvNdHgHAoGBAP0foYdz3Sib1BHSV/do6HELtU5bz41XQoRbasbyJq6DMfY06WUJnAH8W0zemBNJF55mjAW08LhtY5D1HU8kEHe9cZBHOvgQdHg80ftr/rcmp1PSO6LL9+zDVMPyrURiXUR2j7UzoBU6HqAg+fvBIcAcZAmByfOoWRf/Dm1XoxuzAoGAA23MSZhoUjx06iGTZjlrH8b6m5DFcxxEhnsqMBytJrB9puPA6fRKFnQtTG6IEUiYAL0cqfVdwra2c34cK3RX4joq3hniJopTjoZkVkxPNLSBC3E8vIgJafNb70fMWtY/rgsjn1Jf/SWoy+wJgiajWzjv2KyFDFbwDBKIjrrBUDcCgYEA5KH5iRvCm7eFKkPQaQ09Rz7IGWscYhJ7ZoocPG7lOaQPMNBCMJ0paTHEVf6JZoIS72S4/T6eYDeOQ5TjUGTG6yEWvrdYMFDMov5svKijflNPuIqgiz+pRRZ6LjO5BZfDnt9olsd2xTWmDAU9R4T/M0NxqJSvEYLyVpZvNZx/G7kCgYEAym+h49n5//pZ6p3DydJj758TjGMpbPwUSgEbKYL6a0jbbqp4N+5vCuQgRqAzVqL0gWLaQUaxH0LRyUjixGToNqBPVlPbXsQcr820F196HfX4GS4puSiYtHHMSYRo+4FNANS39uVV7lL1L3lzXcnPDBrdcFc6xa4XNuEMtpMyHvw=-----END RSA PRIVATE KEY-----";
+    
+    __block NSString *pubServerKey;
+    
+    [self getPublicKeyFromServer:^(NSString * _Nullable key) {
+        pubServerKey = key;
+        NSLog(@"%@", key);
+        
+        NSError *error;
+        NSData *testData = [self createDataMessage];
+        NSData *encryptedData = [RSA encryptData:testData publicKey:pubServerKey];
+        NSData *testData64 = [encryptedData base64EncodedDataWithOptions:0];
+        testData = nil;
+        
+        DataMessage *dataReader1 = [DataMessage parseFromData:testData error:&error];
+        
+        NSString *body = dataReader1.body;
+        NSString *sender = dataReader1.sender;
+        NSString *recipient = dataReader1.recipient;
+        BOOL hasMedia = dataReader1.attachment;
+        
+        NSLog(@"Body %@", body);
+        NSLog(@"sender %@", sender);
+        NSLog(@"recipient %@", recipient);
+        NSLog(@"media %d", hasMedia);
+        
+        //    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+        
+        testData = [[NSData alloc]initWithBase64EncodedData:testData64 options:0];
+        
+        NSLog(@"encrypted length %lu", encryptedData.length);
+        NSLog(@"testData length %lu", testData.length);
+        
+        NSData *unencryptedData = [RSA decryptData:testData privateKey:privServerKey];
+        
+        NSLog(@"encrypted length %lu", encryptedData.length);
+        NSLog(@"testData length %lu", testData.length);
+        
+        DataMessage *dataReader2 = [DataMessage parseFromData:unencryptedData error:&error];
+        
+        body = dataReader2.body;
+        sender = dataReader2.sender;
+        recipient = dataReader2.recipient;
+        hasMedia = dataReader2.attachment;
+        
+        NSLog(@"Body2 %@", body);
+        NSLog(@"sender2 %@", sender);
+        NSLog(@"recipient2 %@", recipient);
+        NSLog(@"media2 %d", hasMedia);
+    }];
+}
+
 -(void)testFileSharing{
+    NSString *privKey3 = @"-----BEGIN PRIVATE KEY-----MIIEogIBAAKCAQEAh9FqJEc21S1hEMoOHevlNxsKCcAlkDWS+OLgKi3/0xHaq5scuZdDx5wViCEI644MvrBzxZ1fGcLNtDy1iafHpDZ3pDyu5KxZpY6j7ne6TGY9/AKpFsCYTi+9ZFi6eP4v85SoWkzhpi5ikiMoaxnJPFs5VDVe3TR9WJxdyRAEfPaw+UyaR4UxyXS6rec+Z2FVsuNAgKEXRH7U+2zl7vAnTSf9hlFH/SHXBdDrK9zn/46Wcxi9kJHuT9Yj6o5n9dTPcuKbKsm6OAqtvP3+tmxge8lIpcEoYY8W4xzwUaKfvavRlB/JF5Ed8VWwy7xDWLPWxg3gij+mhVf3+8qwEcjTVwIDAQABAoIBACKwS1ZBtBEFepWhrbJZthz5dHpiD5YCAOw9cfiD8COWG04aG1+RcVfRlzRCD7et+7ZWdfNCivAW75f5q3ohlp1r5enWL+sq0+izgk4dWUE7Gdi8SziK7zuE+O/gs5vEfDXPwaHyoe1iSn29qgyUtO+L8xv9V6HSzrLrmQ6J30OVFQU7GbJrr+Lc0k38GO245dUciisnxUUoS+513GpfYD70QpnU7lBl3nUsZCiSNxPIWIQhL3X3+yT8Nx4oEyL6qTgmLpbGQuiQ808uowfX54A5MTxVQvju1xJKWYcY5K5461R7Km5PQ6MQtGAiMbk58IjiciDG4FCiYT7Svv7ePvUCgYEAuuLab3yjfiNPmvVDaQnbluwm5nmi9kwtAvj+uv44HCRneWb1ynBu3hy/KpXYJrJLitR5ggQE/kdAWkF5JyRc0uS9tb/lDant0OQgT3He1V/AwnYRI5ay067AcrW5vDIDYmdZAojtboE5SXO0+pzwxbaX4Te0tt57riaRapN3MJsCgYEAugvE0zvKv4/1MJAgoHk3DHZj5tZCT5pOTSVXnlaWndb1jCh61VsFaNzKXqajNQg7tRIerUQMwZX/EB9Npz3sEMrPQs3Lc4ils2P3aebazcg4AVlhGLmsN1GscXlWsjOEQGJaCTl2stX40qo3wNTZdAQLUDOoAEqmRYRRck+dXfUCgYBx+Gyb9tfB0gj3CEG+6fsXlBa5EU73g0cj+/Nk2Cohx3WvDMIyXdTO8ZsHfnBeUPdOx/r99jORWqR9JlabL0rIdiTXlRo79fiJHsYxjNEHMSjdrqEPIhUWkQjeK8MEaT+1IC+hIx4g+P+VstGY0GLpQExpVc6Igy/L6ctewmW6pwKBgB4xgsP1VDY6msRC38irY2+2VwhDhYd9t291u/6Kdu8uz7LrbuPpXbti+cTarmoQ5/++7ROZk6hnO3nWWrflqMYg4/ong/lAGARBGQoq2R/EerJdWxC0MWrY6m+QDa3mBnScgZg1pznm1/b4gQvef1wAvAVMHNvPQaTOkJlIqnVxAoGAS0w5PT8k/UOONyCHKp5lCzV1wW62vy9IT46Lh0q9FTWAfoIBKHm9fAKrk6vomgBrEzqV4W6ZBwFT4s/lLWmDbsGLnzA22Bu+3StAl9UJQP1B0zPdhsULRUvn+zeSS2bAw+WOwMW39NymnO5ojbnR96L/v8+GjblUmHgt63fxVEQ=-----END PRIVATE KEY-----";
+    
+    NSString *pubKey3 = @"-----BEGIN PUBLIC KEY-----\nMIIBCgKCAQEAh9FqJEc21S1hEMoOHevlNxsKCcAlkDWS+OLgKi3/0xHaq5scuZdDx5wViCEI644MvrBzxZ1fGcLNtDy1iafHpDZ3pDyu5KxZpY6j7ne6TGY9/AKpFsCYTi+9ZFi6eP4v85SoWkzhpi5ikiMoaxnJPFs5VDVe3TR9WJxdyRAEfPaw+UyaR4UxyXS6rec+Z2FVsuNAgKEXRH7U+2zl7vAnTSf9hlFH/SHXBdDrK9zn/46Wcxi9kJHuT9Yj6o5n9dTPcuKbKsm6OAqtvP3+tmxge8lIpcEoYY8W4xzwUaKfvavRlB/JF5Ed8VWwy7xDWLPWxg3gij+mhVf3+8qwEcjTVwIDAQAB\n-----END PUBLIC KEY-----";
     NSData *key = [Encryptor generateRandomKeysWithIV:16 withHexKey:32];
     NSString *fileName = @"IMG1.JPG";
     
+    __block dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    
     NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"a.png"], 0.1);
     NSData *encryptedData = [Encryptor encryptDataAES:imageData usingKeyData:key];
+    NSUInteger middle = encryptedData.length / 2;
+    NSUInteger length = encryptedData.length;
+    
+    NSData *firstPart = [encryptedData subdataWithRange:NSMakeRange(0, middle)];
+    NSData *lastPart = [encryptedData subdataWithRange:NSMakeRange(middle, length - middle)];
     
     [iv2 setImage:[UIImage imageWithData:imageData]];
     
-    [self storeFileName:fileName withFileKey:key completion:^(BOOL success) {
+//    for(NSUInteger u = 0; u < 2 ; u++ ){
+//        if(u == 0){
+//            [self storeFileName:@"file1.jpg" withFileKey:encryptedData completion:^(BOOL success) {
+//                if(success){
+//                    NSLog(@"First Part Successful");
+//                    dispatch_semaphore_signal(sema);
+//                } else {
+//                    NSLog(@"First Not Part Successful");
+//                }
+//            }];
+//        } else {
+//            [self storeFileName:@"file1.jpg_last" withFileKey:lastPart completion:^(BOOL success) {
+//                if(success){
+//                    NSLog(@"Last Part Successful");
+//                    dispatch_semaphore_signal(sema);
+//                } else {
+//                    NSLog(@"Last Not Part Successful");
+//                }
+//            }];
+//        }
+//    }
+    
+    NSString *base64String = [key base64EncodedStringWithOptions:0];
+    NSString *encryptedKey = [RSA encryptString:base64String publicKey:pubKey3];
+    
+    [self storeFileName:@"file1.jpg" withFileKey:encryptedKey completion:^(BOOL success) {
         if(success){
-            [self getFileKey:fileName completion:^(NSString * _Nullable key) {
-                NSData *newKey = [[NSData alloc] initWithBase64EncodedString:key options:0];
-                NSData *unencryptedData = [Encryptor decryptCipherDataAES:encryptedData usingKeyData:newKey];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [iv1 setImage:[UIImage imageWithData:unencryptedData]];
-                    [self.view setNeedsDisplay];
-                    [self.view setNeedsLayout];
-                    [self.view setNeedsUpdateConstraints];
-                });
-                NSLog(@"Finish");
-            }];
+            NSLog(@"First Part Successful");
+            dispatch_semaphore_signal(sema);
         } else {
-            NSLog(@"Fail Success");
+            NSLog(@"First Not Part Successful");
         }
     }];
+    
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    
+    __block NSData *getFirstPart;
+    __block NSData *getLastPart;
+    
+    dispatch_group_t group = dispatch_group_create();
+    
+//    dispatch_group_enter(group);
+//    [self getFileKey:@"file1.jpg" completion:^(NSString * _Nullable key) {
+//        if(key){
+//            getFirstPart = [[NSData alloc]initWithBase64EncodedString:key options:0];
+//            NSLog(@"First Get Successful");
+//            dispatch_group_leave(group);           // leave if successful
+//        } else {
+//            NSLog(@"First Get Not Successful");
+//        }
+//    }];
+//
+//    dispatch_group_enter(group);
+//    [self getFileKey:@"file1.jpg_last" completion:^(NSString * _Nullable key) {
+//        if(key){
+//            getLastPart = [[NSData alloc]initWithBase64EncodedString:key options:0];
+//            NSLog(@"Last Get Successful");
+//            dispatch_group_leave(group);           // leave if successful
+//        } else {
+//            NSLog(@"Last Get Not Successful");
+//        }
+//    }];
+    
+//    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+//        NSMutableData *finalData = [[NSMutableData alloc]init];
+//
+//        [finalData appendData:getFirstPart];
+//        [finalData appendData:getLastPart];
+//
+//        NSData *unencryptedData = [Encryptor decryptCipherDataAES:finalData usingKeyData:key];
+//
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [iv1 setImage:[UIImage imageWithData:unencryptedData]];
+//            [self.view setNeedsDisplay];
+//            [self.view setNeedsLayout];
+//            [self.view setNeedsUpdateConstraints];
+//        });
+//    });
+    
+    [self getFileKey:@"file1.jpg" completion:^(NSString * _Nullable key) {
+        if(key){
+            NSString *unencryptedKey = [RSA decryptString:key privateKey:privKey3];
+            NSData *newKey = [[NSData alloc]initWithBase64EncodedString:unencryptedKey options:0];
+            NSLog(@"First Get Successful");
+            NSData *unencryptedData = [Encryptor decryptCipherDataAES:encryptedData usingKeyData:newKey];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [iv1 setImage:[UIImage imageWithData:unencryptedData]];
+                [self.view setNeedsDisplay];
+                [self.view setNeedsLayout];
+                [self.view setNeedsUpdateConstraints];
+            });
+        } else {
+            NSLog(@"First Get Not Successful");
+        }
+    }];
+    
+    
+    
+//    [self storeFileName:fileName withFileKey:key completion:^(BOOL success) {
+//        if(success){
+//            [self getFileKey:fileName completion:^(NSString * _Nullable key) {
+//                NSData *newKey = [[NSData alloc] initWithBase64EncodedString:key options:0];
+//                NSData *unencryptedData = [Encryptor decryptCipherDataAES:encryptedData usingKeyData:newKey];
+//
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [iv1 setImage:[UIImage imageWithData:unencryptedData]];
+//                    [self.view setNeedsDisplay];
+//                    [self.view setNeedsLayout];
+//                    [self.view setNeedsUpdateConstraints];
+//                });
+//                NSLog(@"Finish");
+//            }];
+//        } else {
+//            NSLog(@"Fail Success");
+//        }
+//    }];
 }
 
 -(void) customAES{
@@ -382,6 +547,35 @@
     return [builder data];
 }
 
+-(void) getPublicKeyFromServer:(void (^)(NSString * _Nullable key))completion{
+    NSString *username = @"mamal";
+    NSString *password =  @"mamal1234";
+    NSData *basicAuth = [[NSString stringWithFormat:@"%@:%@", username,password]dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *base64Auth = [basicAuth base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0];
+    NSString *authValue = [NSString stringWithFormat:@"Basic %@", base64Auth];
+    
+    NSString *url = [NSString stringWithFormat:@"http://192.168.0.197:8000/keys/get_serverKey/"];
+    //    NSString *url = [NSString stringWithFormat:@"http://192.168.1.111:8000/keys/get_key?user_number=%@",person];
+    NSLog(@"URL %@", url);
+    //    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithString:[NSString stringWithFormat:@"%@%@",textSecureServerURL,kaiChatGetDeviceId]];
+    //    NSString *url = urlComponents.URL.absoluteString;
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if(data){
+            NSError *errorr;
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&errorr];
+            NSLog(@"%@", dict);
+            NSString *publicKey = [dict objectForKey:@"key"];
+            completion(publicKey);
+        } else if(error){
+            completion(nil);
+        }
+    }];
+    [task resume];
+}
+
 -(void) getPublicKeyFromPerson:(NSString*)person
                     completion:(void (^)(NSString * _Nullable key))completion{
     NSString *username = @"mamal";
@@ -415,7 +609,7 @@
 }
 
 -(void) storeFileName:(NSString*)fileName
-        withFileKey:(NSData*)fileKey
+        withFileKey:(NSString*)fileKey
           completion:(void (^)(BOOL success))completion{
     
     NSString *username = @"mamal";
@@ -429,11 +623,11 @@
     NSLog(@"%@", fileName);
     NSLog(@"%lu", fileKey.length);
     
-    NSString *fileKeys = [fileKey base64EncodedStringWithOptions:0];
+//    NSString *fileKeys = [fileKey base64EncodedStringWithOptions:0];
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:
                                  fileName,@"file_name",
-                                 fileKeys, @"file_key",
+                                 fileKey, @"file_key",
                                  nil];
     
     NSLog(@"Dict %@", dict);
@@ -459,7 +653,6 @@
             NSLog(@"%ld", (long)statusCode);
             NSLog(@"%@", error.localizedDescription);
         }
-
     }];
     
 //    [session uploadTaskWithRequest:request fromData:fileKey completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
