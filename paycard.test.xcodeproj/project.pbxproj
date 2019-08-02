@@ -1,0 +1,845 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		53E8394622F17749002E6167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E8394522F17749002E6167 /* AppDelegate.swift */; };
+		53E8394822F17749002E6167 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E8394722F17749002E6167 /* ViewController.swift */; };
+		53E8394B22F17749002E6167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E8394922F17749002E6167 /* Main.storyboard */; };
+		53E8394D22F1774C002E6167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E8394C22F1774C002E6167 /* Assets.xcassets */; };
+		53E8395022F1774C002E6167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E8394E22F1774C002E6167 /* LaunchScreen.storyboard */; };
+		53E8395B22F1774C002E6167 /* paycard_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E8395A22F1774C002E6167 /* paycard_testTests.swift */; };
+		53E8396622F1774C002E6167 /* paycard_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E8396522F1774C002E6167 /* paycard_testUITests.swift */; };
+		53E8397622F177C6002E6167 /* EigenWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53E8397522F177C6002E6167 /* EigenWrapper.mm */; };
+		53E8398222F1800B002E6167 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E8398122F1800B002E6167 /* opencv2.framework */; };
+		53E8399222F18CC7002E6167 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E8399122F18CC7002E6167 /* CoreVideo.framework */; };
+		53E839AB22F19738002E6167 /* GPUImageContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E8399C22F19738002E6167 /* GPUImageContext.m */; };
+		53E839AC22F19738002E6167 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E8399E22F19738002E6167 /* GLProgram.m */; };
+		53E839AD22F19738002E6167 /* GPUImageOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E8399F22F19738002E6167 /* GPUImageOutput.m */; };
+		53E839AE22F19738002E6167 /* GPUImageFramebuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E839A022F19738002E6167 /* GPUImageFramebuffer.m */; };
+		53E839AF22F19738002E6167 /* GPUImageFramebufferCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E839A222F19738002E6167 /* GPUImageFramebufferCache.m */; };
+		53E839B022F19738002E6167 /* GPUImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E839A422F19738002E6167 /* GPUImageView.m */; };
+		53E839B122F19738002E6167 /* GPUImageVideoCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E839A522F19738002E6167 /* GPUImageVideoCamera.m */; };
+		53E839B222F19738002E6167 /* GPUImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E839A822F19738002E6167 /* GPUImageFilter.m */; };
+		53E839B722F19837002E6167 /* WOTorchDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53E839B622F19837002E6167 /* WOTorchDelegate.mm */; };
+		53E839BA22F19D04002E6167 /* WOEdgesWrapperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E839B922F19D04002E6167 /* WOEdgesWrapperView.m */; };
+		53E839C222F284AE002E6167 /* EdgesDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53E839C122F284AE002E6167 /* EdgesDetector.cpp */; };
+		53E839C622F28566002E6167 /* FrameStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53E839C422F28566002E6167 /* FrameStorage.cpp */; };
+		53E839CF22F288A1002E6167 /* hough.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53E839CB22F288A1002E6167 /* hough.cpp */; };
+		53E839D022F288A1002E6167 /* canny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53E839CC22F288A1002E6167 /* canny.cpp */; };
+		53E839D122F288A1002E6167 /* warp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53E839CE22F288A1002E6167 /* warp.cpp */; };
+		53E839D422F2891D002E6167 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53E839D322F2891D002E6167 /* Utils.cpp */; };
+		53E839D922F2901E002E6167 /* RecognitionCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53E839D522F2901E002E6167 /* RecognitionCore.cpp */; };
+		53E839DD22F29084002E6167 /* CardRecognizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53E839DB22F29084002E6167 /* CardRecognizer.mm */; };
+		53E839E022F29B4C002E6167 /* ServiceContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53E839DF22F29B4C002E6167 /* ServiceContainer.cpp */; };
+		53E839E322F29BC6002E6167 /* TorchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53E839E122F29BC6002E6167 /* TorchManager.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		53E8395722F1774C002E6167 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53E8393A22F17749002E6167 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53E8394122F17749002E6167;
+			remoteInfo = paycard.test;
+		};
+		53E8396222F1774C002E6167 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53E8393A22F17749002E6167 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53E8394122F17749002E6167;
+			remoteInfo = paycard.test;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		53E8394222F17749002E6167 /* paycard.test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = paycard.test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		53E8394522F17749002E6167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		53E8394722F17749002E6167 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		53E8394A22F17749002E6167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		53E8394C22F1774C002E6167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		53E8394F22F1774C002E6167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		53E8395122F1774C002E6167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53E8395622F1774C002E6167 /* paycard.testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = paycard.testTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		53E8395A22F1774C002E6167 /* paycard_testTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paycard_testTests.swift; sourceTree = "<group>"; };
+		53E8395C22F1774C002E6167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53E8396122F1774C002E6167 /* paycard.testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = paycard.testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		53E8396522F1774C002E6167 /* paycard_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paycard_testUITests.swift; sourceTree = "<group>"; };
+		53E8396722F1774C002E6167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53E8397322F177C5002E6167 /* paycard.test-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "paycard.test-Bridging-Header.h"; sourceTree = "<group>"; };
+		53E8397422F177C6002E6167 /* EigenWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EigenWrapper.h; sourceTree = "<group>"; };
+		53E8397522F177C6002E6167 /* EigenWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = EigenWrapper.mm; sourceTree = "<group>"; };
+		53E8397F22F17E46002E6167 /* IRecognitionCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRecognitionCore.h; sourceTree = "<group>"; };
+		53E8398122F1800B002E6167 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = paycard.test/opencv2.framework; sourceTree = "<group>"; };
+		53E8398A22F184A5002E6167 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		53E8399122F18CC7002E6167 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		53E8399B22F19738002E6167 /* GPUImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageView.h; sourceTree = "<group>"; };
+		53E8399C22F19738002E6167 /* GPUImageContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageContext.m; sourceTree = "<group>"; };
+		53E8399D22F19738002E6167 /* GPUImageVideoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageVideoCamera.h; sourceTree = "<group>"; };
+		53E8399E22F19738002E6167 /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
+		53E8399F22F19738002E6167 /* GPUImageOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageOutput.m; sourceTree = "<group>"; };
+		53E839A022F19738002E6167 /* GPUImageFramebuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageFramebuffer.m; sourceTree = "<group>"; };
+		53E839A122F19738002E6167 /* GPUImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageFilter.h; sourceTree = "<group>"; };
+		53E839A222F19738002E6167 /* GPUImageFramebufferCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageFramebufferCache.m; sourceTree = "<group>"; };
+		53E839A322F19738002E6167 /* GPUImageContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageContext.h; sourceTree = "<group>"; };
+		53E839A422F19738002E6167 /* GPUImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageView.m; sourceTree = "<group>"; };
+		53E839A522F19738002E6167 /* GPUImageVideoCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageVideoCamera.m; sourceTree = "<group>"; };
+		53E839A622F19738002E6167 /* GPUImageFramebufferCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageFramebufferCache.h; sourceTree = "<group>"; };
+		53E839A722F19738002E6167 /* GPUImageFramebuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageFramebuffer.h; sourceTree = "<group>"; };
+		53E839A822F19738002E6167 /* GPUImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageFilter.m; sourceTree = "<group>"; };
+		53E839A922F19738002E6167 /* GPUImageOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageOutput.h; sourceTree = "<group>"; };
+		53E839AA22F19738002E6167 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
+		53E839B422F19837002E6167 /* ITorchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITorchDelegate.h; sourceTree = "<group>"; };
+		53E839B522F19837002E6167 /* WOTorchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTorchDelegate.h; sourceTree = "<group>"; };
+		53E839B622F19837002E6167 /* WOTorchDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WOTorchDelegate.mm; sourceTree = "<group>"; };
+		53E839B822F19D03002E6167 /* WOEdgesWrapperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOEdgesWrapperView.h; sourceTree = "<group>"; };
+		53E839B922F19D04002E6167 /* WOEdgesWrapperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOEdgesWrapperView.m; sourceTree = "<group>"; };
+		53E839BB22F27F4B002E6167 /* ITorchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITorchManager.h; sourceTree = "<group>"; };
+		53E839BC22F27F53002E6167 /* IServiceContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IServiceContainer.h; sourceTree = "<group>"; };
+		53E839BE22F28431002E6167 /* IEdgesDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEdgesDetector.h; sourceTree = "<group>"; };
+		53E839C022F284AE002E6167 /* EdgesDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EdgesDetector.h; sourceTree = "<group>"; };
+		53E839C122F284AE002E6167 /* EdgesDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgesDetector.cpp; sourceTree = "<group>"; };
+		53E839C322F2851F002E6167 /* IBaseObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBaseObj.h; sourceTree = "<group>"; };
+		53E839C422F28566002E6167 /* FrameStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FrameStorage.cpp; sourceTree = "<group>"; };
+		53E839C522F28566002E6167 /* FrameStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameStorage.h; sourceTree = "<group>"; };
+		53E839C722F28571002E6167 /* IFrameStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFrameStorage.h; sourceTree = "<group>"; };
+		53E839C922F288A1002E6167 /* hough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hough.h; sourceTree = "<group>"; };
+		53E839CA22F288A1002E6167 /* canny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = canny.h; sourceTree = "<group>"; };
+		53E839CB22F288A1002E6167 /* hough.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hough.cpp; sourceTree = "<group>"; };
+		53E839CC22F288A1002E6167 /* canny.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = canny.cpp; sourceTree = "<group>"; };
+		53E839CD22F288A1002E6167 /* warp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = warp.h; sourceTree = "<group>"; };
+		53E839CE22F288A1002E6167 /* warp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = warp.cpp; sourceTree = "<group>"; };
+		53E839D222F2891D002E6167 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		53E839D322F2891D002E6167 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		53E839D522F2901E002E6167 /* RecognitionCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RecognitionCore.cpp; sourceTree = "<group>"; };
+		53E839D722F2901E002E6167 /* RecognitionCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecognitionCore.h; sourceTree = "<group>"; };
+		53E839DB22F29084002E6167 /* CardRecognizer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CardRecognizer.mm; sourceTree = "<group>"; };
+		53E839DC22F29084002E6167 /* CardRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardRecognizer.h; sourceTree = "<group>"; };
+		53E839DE22F29B4C002E6167 /* ServiceContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceContainer.h; sourceTree = "<group>"; };
+		53E839DF22F29B4C002E6167 /* ServiceContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceContainer.cpp; sourceTree = "<group>"; };
+		53E839E122F29BC6002E6167 /* TorchManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TorchManager.cpp; sourceTree = "<group>"; };
+		53E839E222F29BC6002E6167 /* TorchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorchManager.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53E8393F22F17749002E6167 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53E8399222F18CC7002E6167 /* CoreVideo.framework in Frameworks */,
+				53E8398222F1800B002E6167 /* opencv2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53E8395322F1774C002E6167 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53E8395E22F1774C002E6167 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		53E8393922F17749002E6167 = {
+			isa = PBXGroup;
+			children = (
+				53E8394422F17749002E6167 /* paycard.test */,
+				53E8395922F1774C002E6167 /* paycard.testTests */,
+				53E8396422F1774C002E6167 /* paycard.testUITests */,
+				53E8394322F17749002E6167 /* Products */,
+				53E8398022F1800B002E6167 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		53E8394322F17749002E6167 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				53E8394222F17749002E6167 /* paycard.test.app */,
+				53E8395622F1774C002E6167 /* paycard.testTests.xctest */,
+				53E8396122F1774C002E6167 /* paycard.testUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		53E8394422F17749002E6167 /* paycard.test */ = {
+			isa = PBXGroup;
+			children = (
+				53E8397722F17962002E6167 /* CardDetector */,
+				53E8394522F17749002E6167 /* AppDelegate.swift */,
+				53E8394722F17749002E6167 /* ViewController.swift */,
+				53E8394922F17749002E6167 /* Main.storyboard */,
+				53E8394C22F1774C002E6167 /* Assets.xcassets */,
+				53E8394E22F1774C002E6167 /* LaunchScreen.storyboard */,
+				53E8395122F1774C002E6167 /* Info.plist */,
+				53E8397422F177C6002E6167 /* EigenWrapper.h */,
+				53E8397522F177C6002E6167 /* EigenWrapper.mm */,
+				53E8397322F177C5002E6167 /* paycard.test-Bridging-Header.h */,
+				53E8398A22F184A5002E6167 /* PrefixHeader.pch */,
+			);
+			path = paycard.test;
+			sourceTree = "<group>";
+		};
+		53E8395922F1774C002E6167 /* paycard.testTests */ = {
+			isa = PBXGroup;
+			children = (
+				53E8395A22F1774C002E6167 /* paycard_testTests.swift */,
+				53E8395C22F1774C002E6167 /* Info.plist */,
+			);
+			path = paycard.testTests;
+			sourceTree = "<group>";
+		};
+		53E8396422F1774C002E6167 /* paycard.testUITests */ = {
+			isa = PBXGroup;
+			children = (
+				53E8396522F1774C002E6167 /* paycard_testUITests.swift */,
+				53E8396722F1774C002E6167 /* Info.plist */,
+			);
+			path = paycard.testUITests;
+			sourceTree = "<group>";
+		};
+		53E8397722F17962002E6167 /* CardDetector */ = {
+			isa = PBXGroup;
+			children = (
+				53E839C822F288A1002E6167 /* CV */,
+				53E839BF22F28474002E6167 /* Recognizer */,
+				53E839BD22F28431002E6167 /* Public */,
+				53E839B322F19837002E6167 /* Torch */,
+				53E8399A22F19738002E6167 /* GPUImage */,
+			);
+			path = CardDetector;
+			sourceTree = "<group>";
+		};
+		53E8398022F1800B002E6167 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53E8399122F18CC7002E6167 /* CoreVideo.framework */,
+				53E8398122F1800B002E6167 /* opencv2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53E8399A22F19738002E6167 /* GPUImage */ = {
+			isa = PBXGroup;
+			children = (
+				53E8399B22F19738002E6167 /* GPUImageView.h */,
+				53E8399C22F19738002E6167 /* GPUImageContext.m */,
+				53E8399D22F19738002E6167 /* GPUImageVideoCamera.h */,
+				53E8399E22F19738002E6167 /* GLProgram.m */,
+				53E8399F22F19738002E6167 /* GPUImageOutput.m */,
+				53E839A022F19738002E6167 /* GPUImageFramebuffer.m */,
+				53E839A122F19738002E6167 /* GPUImageFilter.h */,
+				53E839A222F19738002E6167 /* GPUImageFramebufferCache.m */,
+				53E839A322F19738002E6167 /* GPUImageContext.h */,
+				53E839A422F19738002E6167 /* GPUImageView.m */,
+				53E839A522F19738002E6167 /* GPUImageVideoCamera.m */,
+				53E839A622F19738002E6167 /* GPUImageFramebufferCache.h */,
+				53E839A722F19738002E6167 /* GPUImageFramebuffer.h */,
+				53E839A822F19738002E6167 /* GPUImageFilter.m */,
+				53E839A922F19738002E6167 /* GPUImageOutput.h */,
+				53E839AA22F19738002E6167 /* GLProgram.h */,
+			);
+			path = GPUImage;
+			sourceTree = "<group>";
+		};
+		53E839B322F19837002E6167 /* Torch */ = {
+			isa = PBXGroup;
+			children = (
+				53E839E122F29BC6002E6167 /* TorchManager.cpp */,
+				53E839E222F29BC6002E6167 /* TorchManager.h */,
+				53E839BB22F27F4B002E6167 /* ITorchManager.h */,
+				53E839B422F19837002E6167 /* ITorchDelegate.h */,
+				53E839B522F19837002E6167 /* WOTorchDelegate.h */,
+				53E839B622F19837002E6167 /* WOTorchDelegate.mm */,
+			);
+			path = Torch;
+			sourceTree = "<group>";
+		};
+		53E839BD22F28431002E6167 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				53E839C722F28571002E6167 /* IFrameStorage.h */,
+				53E839C322F2851F002E6167 /* IBaseObj.h */,
+				53E8397F22F17E46002E6167 /* IRecognitionCore.h */,
+				53E839BC22F27F53002E6167 /* IServiceContainer.h */,
+				53E839BE22F28431002E6167 /* IEdgesDetector.h */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		53E839BF22F28474002E6167 /* Recognizer */ = {
+			isa = PBXGroup;
+			children = (
+				53E839DF22F29B4C002E6167 /* ServiceContainer.cpp */,
+				53E839DE22F29B4C002E6167 /* ServiceContainer.h */,
+				53E839DC22F29084002E6167 /* CardRecognizer.h */,
+				53E839DB22F29084002E6167 /* CardRecognizer.mm */,
+				53E839D522F2901E002E6167 /* RecognitionCore.cpp */,
+				53E839D722F2901E002E6167 /* RecognitionCore.h */,
+				53E839C422F28566002E6167 /* FrameStorage.cpp */,
+				53E839C522F28566002E6167 /* FrameStorage.h */,
+				53E839C122F284AE002E6167 /* EdgesDetector.cpp */,
+				53E839C022F284AE002E6167 /* EdgesDetector.h */,
+				53E839B822F19D03002E6167 /* WOEdgesWrapperView.h */,
+				53E839B922F19D04002E6167 /* WOEdgesWrapperView.m */,
+			);
+			path = Recognizer;
+			sourceTree = "<group>";
+		};
+		53E839C822F288A1002E6167 /* CV */ = {
+			isa = PBXGroup;
+			children = (
+				53E839D322F2891D002E6167 /* Utils.cpp */,
+				53E839D222F2891D002E6167 /* Utils.h */,
+				53E839C922F288A1002E6167 /* hough.h */,
+				53E839CA22F288A1002E6167 /* canny.h */,
+				53E839CB22F288A1002E6167 /* hough.cpp */,
+				53E839CC22F288A1002E6167 /* canny.cpp */,
+				53E839CD22F288A1002E6167 /* warp.h */,
+				53E839CE22F288A1002E6167 /* warp.cpp */,
+			);
+			path = CV;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		53E8394122F17749002E6167 /* paycard.test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53E8396A22F1774C002E6167 /* Build configuration list for PBXNativeTarget "paycard.test" */;
+			buildPhases = (
+				53E8393E22F17749002E6167 /* Sources */,
+				53E8393F22F17749002E6167 /* Frameworks */,
+				53E8394022F17749002E6167 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = paycard.test;
+			productName = paycard.test;
+			productReference = 53E8394222F17749002E6167 /* paycard.test.app */;
+			productType = "com.apple.product-type.application";
+		};
+		53E8395522F1774C002E6167 /* paycard.testTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53E8396D22F1774C002E6167 /* Build configuration list for PBXNativeTarget "paycard.testTests" */;
+			buildPhases = (
+				53E8395222F1774C002E6167 /* Sources */,
+				53E8395322F1774C002E6167 /* Frameworks */,
+				53E8395422F1774C002E6167 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				53E8395822F1774C002E6167 /* PBXTargetDependency */,
+			);
+			name = paycard.testTests;
+			productName = paycard.testTests;
+			productReference = 53E8395622F1774C002E6167 /* paycard.testTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		53E8396022F1774C002E6167 /* paycard.testUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53E8397022F1774C002E6167 /* Build configuration list for PBXNativeTarget "paycard.testUITests" */;
+			buildPhases = (
+				53E8395D22F1774C002E6167 /* Sources */,
+				53E8395E22F1774C002E6167 /* Frameworks */,
+				53E8395F22F1774C002E6167 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				53E8396322F1774C002E6167 /* PBXTargetDependency */,
+			);
+			name = paycard.testUITests;
+			productName = paycard.testUITests;
+			productReference = 53E8396122F1774C002E6167 /* paycard.testUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		53E8393A22F17749002E6167 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = mal;
+				TargetAttributes = {
+					53E8394122F17749002E6167 = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
+					};
+					53E8395522F1774C002E6167 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 53E8394122F17749002E6167;
+					};
+					53E8396022F1774C002E6167 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 53E8394122F17749002E6167;
+					};
+				};
+			};
+			buildConfigurationList = 53E8393D22F17749002E6167 /* Build configuration list for PBXProject "paycard.test" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 53E8393922F17749002E6167;
+			productRefGroup = 53E8394322F17749002E6167 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				53E8394122F17749002E6167 /* paycard.test */,
+				53E8395522F1774C002E6167 /* paycard.testTests */,
+				53E8396022F1774C002E6167 /* paycard.testUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		53E8394022F17749002E6167 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53E8395022F1774C002E6167 /* LaunchScreen.storyboard in Resources */,
+				53E8394D22F1774C002E6167 /* Assets.xcassets in Resources */,
+				53E8394B22F17749002E6167 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53E8395422F1774C002E6167 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53E8395F22F1774C002E6167 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53E8393E22F17749002E6167 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53E839AE22F19738002E6167 /* GPUImageFramebuffer.m in Sources */,
+				53E839CF22F288A1002E6167 /* hough.cpp in Sources */,
+				53E839AF22F19738002E6167 /* GPUImageFramebufferCache.m in Sources */,
+				53E839D122F288A1002E6167 /* warp.cpp in Sources */,
+				53E839AC22F19738002E6167 /* GLProgram.m in Sources */,
+				53E8397622F177C6002E6167 /* EigenWrapper.mm in Sources */,
+				53E839DD22F29084002E6167 /* CardRecognizer.mm in Sources */,
+				53E839C222F284AE002E6167 /* EdgesDetector.cpp in Sources */,
+				53E839C622F28566002E6167 /* FrameStorage.cpp in Sources */,
+				53E839D022F288A1002E6167 /* canny.cpp in Sources */,
+				53E839B022F19738002E6167 /* GPUImageView.m in Sources */,
+				53E839E022F29B4C002E6167 /* ServiceContainer.cpp in Sources */,
+				53E839AD22F19738002E6167 /* GPUImageOutput.m in Sources */,
+				53E839B722F19837002E6167 /* WOTorchDelegate.mm in Sources */,
+				53E839B222F19738002E6167 /* GPUImageFilter.m in Sources */,
+				53E839B122F19738002E6167 /* GPUImageVideoCamera.m in Sources */,
+				53E839D922F2901E002E6167 /* RecognitionCore.cpp in Sources */,
+				53E8394822F17749002E6167 /* ViewController.swift in Sources */,
+				53E839D422F2891D002E6167 /* Utils.cpp in Sources */,
+				53E839BA22F19D04002E6167 /* WOEdgesWrapperView.m in Sources */,
+				53E8394622F17749002E6167 /* AppDelegate.swift in Sources */,
+				53E839AB22F19738002E6167 /* GPUImageContext.m in Sources */,
+				53E839E322F29BC6002E6167 /* TorchManager.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53E8395222F1774C002E6167 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53E8395B22F1774C002E6167 /* paycard_testTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53E8395D22F1774C002E6167 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53E8396622F1774C002E6167 /* paycard_testUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		53E8395822F1774C002E6167 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53E8394122F17749002E6167 /* paycard.test */;
+			targetProxy = 53E8395722F1774C002E6167 /* PBXContainerItemProxy */;
+		};
+		53E8396322F1774C002E6167 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53E8394122F17749002E6167 /* paycard.test */;
+			targetProxy = 53E8396222F1774C002E6167 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		53E8394922F17749002E6167 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53E8394A22F17749002E6167 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		53E8394E22F1774C002E6167 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53E8394F22F1774C002E6167 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		53E8396822F1774C002E6167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		53E8396922F1774C002E6167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		53E8396B22F1774C002E6167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DNH6ULJ8WA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/paycard.test",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/paycard.test/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					CPU_ONLY,
+					COMPACT,
+					USE_EIGEN,
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/paycard.test/Eigen",
+					"$(PROJECT_DIR)/paycard.test/google/protobuf",
+				);
+				INFOPLIST_FILE = paycard.test/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/paycard.test/PayCardsRecognizer/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "test.paycard-test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "paycard.test/paycard.test-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		53E8396C22F1774C002E6167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DNH6ULJ8WA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/paycard.test",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/paycard.test/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					COMPACT,
+					USE_EIGEN,
+					CPU_ONLY,
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/paycard.test/Eigen",
+					"$(PROJECT_DIR)/paycard.test/google/protobuf",
+				);
+				INFOPLIST_FILE = paycard.test/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/paycard.test/PayCardsRecognizer/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "test.paycard-test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "paycard.test/paycard.test-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		53E8396E22F1774C002E6167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DNH6ULJ8WA;
+				INFOPLIST_FILE = paycard.testTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "test.paycard-testTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/paycard.test.app/paycard.test";
+			};
+			name = Debug;
+		};
+		53E8396F22F1774C002E6167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DNH6ULJ8WA;
+				INFOPLIST_FILE = paycard.testTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "test.paycard-testTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/paycard.test.app/paycard.test";
+			};
+			name = Release;
+		};
+		53E8397122F1774C002E6167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DNH6ULJ8WA;
+				INFOPLIST_FILE = paycard.testUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "test.paycard-testUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = paycard.test;
+			};
+			name = Debug;
+		};
+		53E8397222F1774C002E6167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DNH6ULJ8WA;
+				INFOPLIST_FILE = paycard.testUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "test.paycard-testUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = paycard.test;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53E8393D22F17749002E6167 /* Build configuration list for PBXProject "paycard.test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53E8396822F1774C002E6167 /* Debug */,
+				53E8396922F1774C002E6167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53E8396A22F1774C002E6167 /* Build configuration list for PBXNativeTarget "paycard.test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53E8396B22F1774C002E6167 /* Debug */,
+				53E8396C22F1774C002E6167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53E8396D22F1774C002E6167 /* Build configuration list for PBXNativeTarget "paycard.testTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53E8396E22F1774C002E6167 /* Debug */,
+				53E8396F22F1774C002E6167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53E8397022F1774C002E6167 /* Build configuration list for PBXNativeTarget "paycard.testUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53E8397122F1774C002E6167 /* Debug */,
+				53E8397222F1774C002E6167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 53E8393A22F17749002E6167 /* Project object */;
+}
