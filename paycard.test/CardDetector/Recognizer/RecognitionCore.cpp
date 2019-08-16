@@ -290,8 +290,10 @@ cv::Mat CRecognitionCore::CaptureView()
             
             CardsOrientation orientation = frameStorage->GetYUVOrientation();
             
-            if (orientation != CardsOrientationUpsideDown &&
-                orientation != CardsOrientationPortrait) {
+            if (orientation != CardsOrientationPortrait) {
+//            if (orientation != CardsOrientationUpsideDown &&
+//                orientation != CardsOrientationPortrait) {
+                
                 
                 CUtils::RotateMatrix90n(normalizedMat, normalizedMat, 90);
             }

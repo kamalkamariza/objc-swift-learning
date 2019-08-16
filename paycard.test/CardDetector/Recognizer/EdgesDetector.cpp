@@ -52,7 +52,8 @@ const Rect CEdgesDetector::CalcWorkingArea(Size frameSize, int captureAreaWidth,
     cv::Rect windowRect;
     int x, y;
     
-    if (orienation == CardsOrientationPortrait || orienation == CardsOrientationUpsideDown) {
+    if (orienation == CardsOrientationPortrait) {
+//    if (orienation == CardsOrientationPortrait || orienation == CardsOrientationUpsideDown) {
         
         x = (frameSize.height - height)/2;
         y = (frameSize.width - width)/2;
@@ -97,7 +98,8 @@ const DetectedLineFlags CEdgesDetector::DetectEdges(Mat& rawFrame, vector<Parame
     ParametricLine topLine;
     if(BestLine(&topLine, topEdge, false)) {
         
-        if (_orientation == CardsOrientationPortrait || _orientation == CardsOrientationUpsideDown) {
+        if (_orientation == CardsOrientationPortrait) {
+//        if (_orientation == CardsOrientationPortrait || _orientation == CardsOrientationUpsideDown) {
             _lineFlags |= DetectedLineTopFlag;
         }
         else {
@@ -108,7 +110,8 @@ const DetectedLineFlags CEdgesDetector::DetectEdges(Mat& rawFrame, vector<Parame
     ParametricLine bottomLine;
     if(BestLine(&bottomLine, bottomEdge, false)) {
         
-        if (_orientation == CardsOrientationPortrait || _orientation == CardsOrientationUpsideDown) {
+        if (_orientation == CardsOrientationPortrait) {
+//        if (_orientation == CardsOrientationPortrait || _orientation == CardsOrientationUpsideDown) {
             _lineFlags |= DetectedLineBottomFlag;
         }
         else {
@@ -118,33 +121,35 @@ const DetectedLineFlags CEdgesDetector::DetectEdges(Mat& rawFrame, vector<Parame
     
     ParametricLine leftLine;
     if(BestLine(&leftLine, leftEdge, true)) {
-        cout << "DEBUG Detect leftline" << endl;
-        if (_orientation == CardsOrientationPortrait || _orientation == CardsOrientationUpsideDown) {
+//        cout << "DEBUG Detect leftline" << endl;
+        if (_orientation == CardsOrientationPortrait) {
+//        if (_orientation == CardsOrientationPortrait || _orientation == CardsOrientationUpsideDown) {
             _lineFlags |= DetectedLineLeftFlag;
         }
         else {
             _lineFlags |= DetectedLineTopFlag;
         }
     } else {
-        cout << "DEBUG fail leftline" << endl;
+//        cout << "DEBUG fail leftline" << endl;
     }
     
     ParametricLine rightLine;
     if(BestLine(&rightLine, rightEdge, true)) {
-        cout << "DEBUG Detect rightline" << endl;
-        if (_orientation == CardsOrientationPortrait || _orientation == CardsOrientationUpsideDown) {
+//        cout << "DEBUG Detect rightline" << endl;
+        if (_orientation == CardsOrientationPortrait) {
+//        if (_orientation == CardsOrientationPortrait || _orientation == CardsOrientationUpsideDown) {
             _lineFlags |= DetectedLineRightFlag;
         }
         else {
             _lineFlags |= DetectedLineBottomFlag;
         }
     } else {
-        cout << "DEBUG fail rightline" << endl;
+//        cout << "DEBUG fail rightline" << endl;
     }
     
     if (_lineFlags&DetectedLineTopFlag &&  _lineFlags&DetectedLineBottomFlag
         && _lineFlags&DetectedLineLeftFlag && _lineFlags&DetectedLineRightFlag) {
-        cout << "DEBUG Detect all" << endl;
+//        cout << "DEBUG Detect all" << endl;
         edges.clear();
         
         edges.push_back(LineByShiftingOrigin(topLine, topRect.x, topRect.y));

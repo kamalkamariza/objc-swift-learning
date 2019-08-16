@@ -8,8 +8,8 @@
 
 #import "WOEdgesWrapperView.h"
 
-static const float kEdgesCornerPadding = 50.0;
-static const float kThickness = 5.0;
+static const float kEdgesCornerPadding = 25.0;
+static const float kThickness = 2.5;
 
 @implementation WOEdgesWrapperView
 
@@ -18,7 +18,7 @@ static const float kThickness = 5.0;
     self = [super init];
     if(self) {
         self.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:182.0/255.0 green:255.0/255.0 blue:102.0/255.0 alpha:1.0];
-        self.frame = CGRectMake(0, 0, 5., 5.);
+        self.frame = CGRectMake(0, 0, 1., 1.);
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
         _topEdge = [UIView new];

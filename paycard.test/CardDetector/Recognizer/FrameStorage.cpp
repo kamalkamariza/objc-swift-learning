@@ -43,7 +43,8 @@ bool CFrameStorage::SetRawFrame(const Mat& rawFrame, const vector<ParametricLine
 
     _grayOrientation = orientation;
     
-    if (_grayOrientation != CardsOrientationUpsideDown && _grayOrientation != CardsOrientationPortrait) {
+    if (_grayOrientation != CardsOrientationPortrait) {
+//    if (_grayOrientation != CardsOrientationUpsideDown && _grayOrientation != CardsOrientationPortrait) {
         
         CUtils::RotateMatrix90n(_frame, _frame, 90);
     }

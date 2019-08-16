@@ -15,7 +15,6 @@
 #include "ITorchDelegate.h"
 #include "IRecognitionCore.h"
 
-#import "WOEdgesWrapperView.h"
 
 #import "GPUImageVideoCamera.h"
 #import "GPUImageView.h"
@@ -65,29 +64,18 @@ using namespace std;
     size_t _bufferSizeUV;
     
     CardsOrientation _orientation;
-    
     int _captureAreaWidth;
+    bool detected;
 }
 
 @property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
-
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
-
 @property (nonatomic, strong) GPUImageVideoCamera *videoCamera;
-
-@property (nonatomic, strong) UIImageView *frameImageView;
-
-@property (nonatomic, strong) UIView *labelsHolderView;
-
 @property (nonatomic, assign) shared_ptr<IRecognitionCore> recognitionCore;
-
-@property (nonatomic, strong) WOEdgesWrapperView *edgesWrapperView;
-
 @property (nonatomic, strong) GPUImageView *view;
-
 @property (nonatomic, weak) UIView *container;
-
 @property (nonatomic, strong) UIColor *frameColor;
+@property (nonatomic, strong) UIView *labelsHolderView;
 
 @end
 
@@ -108,7 +96,6 @@ using namespace std;
         }
         [self deployCameraWithMode];
     }
-    
     return self;
 }
 
@@ -183,21 +170,8 @@ using namespace std;
 
 - (void)torchStatusDidChange:(BOOL)status {
     // TODO: trigger the alertview
-//    NSUInteger delay = 5.0 * NSEC_PER_SEC;
-//    NSUInteger time = dispatch_time(DISPATCH_TIME_NOW, int64(delay));
-//
-//    UIAlertController *alert=   [UIAlertController
-//                                 alertControllerWithTitle:@""
-//                                 message:@"Please hold still"
-//                                 preferredStyle:UIAlertControllerStyleAlert];
-//
-//    [self. presentViewController:alert animated:YES
-//                                               completion:nil];
-//
-//    dispatch_after(time, dispatch_get_main_queue(), {
-//        alert.dismissWithClickedButtonIndex(-1, animated: true)
-//    })
-    [self.videoCamera turnTorchOn:status withValue:0.1];
+    detected = status;
+//    [self.videoCamera turnTorchOn:status withValue:0.1];
 }
 
 - (void)turnTorchOn:(BOOL)on withValue:(float)value {
@@ -206,8 +180,16 @@ using namespace std;
 
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer {
 //    NSLog(@"DEBUG Getting output from recognizer");
-    
+//    currBuffer = sampleBuffer;
     CVImageBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    
+//    if(detected){
+//        [_delegate didRecognize:detected withBuffer:sampleBuffer];
+//    } else {
+//        [_delegate didRecognize:detected withBuffer:sampleBuffer];
+//    }
+    
+    [_delegate didRecognize:detected withBuffer:sampleBuffer];
     
     CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
 
@@ -288,18 +270,18 @@ using namespace std;
             connection.videoOrientation = AVCaptureVideoOrientationPortrait;
             [self.view setInputRotation:kGPUImageNoRotation atIndex:0];
             break;
-        case CardsOrientationUpsideDown:
+//        case CardsOrientationUpsideDown:
 //            connection.videoOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
 //            [self.view setInputRotation:kGPUImageNoRotation atIndex:0];
-            break;
-        case CardsOrientationLandscapeRight:
+//            break;
+//        case CardsOrientationLandscapeRight:
 //            connection.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
 //            [self.view setInputRotation:kGPUImageRotateRight atIndex:0];
-            break;
-        case CardsOrientationLandscapeLeft:
+//            break;
+//        case CardsOrientationLandscapeLeft:
 //            connection.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
 //            [self.view setInputRotation:kGPUImageRotateRight atIndex:0];
-            break;
+//            break;
         default:
             break;
     }
@@ -358,7 +340,7 @@ using namespace std;
     _view.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     
     [_view addSubview:self.frameImageView];
-    
+
     [_view addConstraintWithItem:self.frameImageView attribute:NSLayoutAttributeCenterX];
     [_view addConstraintWithItem:self.frameImageView attribute:NSLayoutAttributeCenterY];
     
@@ -380,8 +362,8 @@ using namespace std;
     if (_frameImageView) {
         return _frameImageView;
     }
-    
-    UIImage *image = [UIImage imageWithContentsOfFile:[self pathToResource:@"PortraitFrame.png"]];
+   
+    UIImage *image = [UIImage imageNamed:@"PortraitFrame.png"];
     
     UIImage *newImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     UIGraphicsBeginImageContextWithOptions(image.size, NO, newImage.scale);

@@ -23,9 +23,9 @@ typedef enum DetectedLineFlags
 typedef enum CardsOrientation {
     CardsOrientationUnknown = 0,
     CardsOrientationPortrait = 1,
-    CardsOrientationUpsideDown = 2,
-    CardsOrientationLandscapeRight = 3,
-    CardsOrientationLandscapeLeft = 4
+//    CardsOrientationUpsideDown = 2,
+//    CardsOrientationLandscapeRight = 3,
+//    CardsOrientationLandscapeLeft = 4
 } CardsOrientation;
 
 class IRecognitionCoreDelegate;

@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
+#import "WOEdgesWrapperView.h"
 
 extern NSString * _Nonnull const WOCardNumber;
 extern NSString * _Nonnull const WOExpDate;
@@ -43,6 +45,8 @@ typedef NS_OPTIONS(NSUInteger, PayCardsRecognizerDataMode) {
 - (instancetype _Nonnull)initWithDelegate:(id<CardRecognizerDelegate> _Nonnull)delegate container:(UIView * _Nonnull)container frameColor:(UIColor * _Nonnull)frameColor;
 
 @property (nonatomic, weak, nullable) id<CardRecognizerDelegate> delegate;
+@property (nonatomic, strong) UIImageView *frameImageView;
+@property (nonatomic, strong) WOEdgesWrapperView * _Nullable edgesWrapperView;
 
 - (void)startCamera;
 
@@ -62,6 +66,6 @@ typedef NS_OPTIONS(NSUInteger, PayCardsRecognizerDataMode) {
 
 @protocol CardRecognizerDelegate
 
-- (void)didRecognize:(BOOL)result;
+- (void)didRecognize:(BOOL)result withBuffer:(CMSampleBufferRef _Nonnull )buffer;
 
 @end
